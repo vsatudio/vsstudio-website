@@ -489,5 +489,303 @@
     });
   });
 
+  var courseModal = document.getElementById("course-modal");
+  var courseModalTitle = document.getElementById("course-modal-title");
+  var courseModalDuration = document.getElementById("course-modal-duration");
+  var courseModalIntro = document.getElementById("course-modal-intro");
+  var courseModalFeatures = document.getElementById("course-modal-features");
+  var courseModalIncludes = document.getElementById("course-modal-includes");
+  var courseModalCloseIcon = document.querySelector(".modal__close");
+  var courseModalCloseButton = document.getElementById("course-modal-close");
+  var courseModalRequest = document.getElementById("course-modal-request");
+  var courseModalBadges = document.getElementById("course-modal-badges");
+  var courseModalPrograma = document.getElementById("course-modal-programa");
+  var courseButtons = document.querySelectorAll("[data-course-id]");
+  var lastFocusedCourseButton = null;
+  var currentCourseId = null;
+
+  var courseDetails = {
+    "manicura-profesional": {
+      title: "Manicura Profesional",
+      durationHours: "8",
+      intro: "Curso orientado a la técnica, el acabado y la salud de la uña en servicio profesional.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Técnica avanzada de limado y perfilado",
+        "Preparación saludable de uñas naturales",
+        "Aplicación de semipermanente y decoración ligera",
+        "Reparación, refuerzo y acabado premium"
+      ],
+      programa: [
+        { title: "Características del sistema", description: "Conceptos básicos de la manicura profesional y beneficios de la técnica" },
+        { title: "Materiales y herramientas", description: "Selección y uso correcto de herramientas profesionales" },
+        { title: "Productos necesarios", description: "Conocimiento detallado de esmaltes, bases y top coats de calidad" },
+        { title: "El tip: tamaños y ajuste", description: "Medición correcta y ajuste perfecto de tips según cada cliente" },
+        { title: "Paso a paso de aplicación", description: "Preparación, aplicación y finalización con técnica experta" },
+        { title: "Errores comunes", description: "Identificación y prevención de los fallos más frecuentes" },
+        { title: "Bioseguridad y asepsia", description: "Protocolos de higiene y desinfección profesional" },
+        { title: "Técnicas en tendencia", description: "Diseños actuales y tendencias en manicura" },
+        { title: "Evaluación final", description: "Prueba práctica para validar tus conocimientos" }
+      ],
+      includes: "Prácticas guiadas, materiales de trabajo, fichas técnicas y guía de mantenimiento completa."
+    },
+    "soft-gel": {
+      title: "Sistema Soft Gel",
+      durationHours: "8",
+      intro: "Formación en una técnica actual para conseguir un acabado natural, duradero y confortable.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Aplicación de soft gel con acabado natural",
+        "Esculpido, limado y formas modernas",
+        "Adhesión segura y preparación de superficie",
+        "Retirado y mantenimiento profesionales"
+      ],
+      programa: [
+        { title: "Características del sistema", description: "Propiedades y ventajas del soft gel frente a otros sistemas" },
+        { title: "Materiales y herramientas", description: "Equipamiento profesional específico para soft gel" },
+        { title: "Productos necesarios", description: "Geles, bases, acabados y productos complementarios" },
+        { title: "El tip: tamaños y ajuste", description: "Selección correcta de formas y tamaños" },
+        { title: "Paso a paso para aplicación correcta", description: "Preparación de uña, aplicación en capas y finalización perfecta" },
+        { title: "Errores comunes", description: "Problemas frecuentes y cómo evitarlos" },
+        { title: "Bioseguridad y asepsia", description: "Estándares de higiene en aplicación de soft gel" },
+        { title: "Técnicas en tendencia", description: "Diseños modernos y decoraciones actuales" },
+        { title: "Evaluación final", description: "Validación de habilidades y conocimientos adquiridos" }
+      ],
+      includes: "Kit de soft gel completo, práctica supervisada, fichas técnicas y guías de mantenimiento."
+    },
+    "acrilico-polygel": {
+      title: "Sistema Acrílico y Polygel",
+      durationHours: "8",
+      intro: "Entiende y domina dos sistemas de uñas técnicas para ofrecer servicios de alta calidad.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Modelado en acrílico y polygel paso a paso",
+        "Transición entre técnicas y mantenimiento",
+        "Corrección de volumen y acabado suave",
+        "Seguridad y durabilidad en servicio real"
+      ],
+      programa: [
+        { title: "Conceptos básicos", description: "Monómeros, polímeros, polygel y acrygel explicados" },
+        { title: "Herramientas y productos", description: "Equipamiento profesional para ambos sistemas" },
+        { title: "Pinceles y uso correcto", description: "Tipos de pinceles y técnica adecuada de aplicación" },
+        { title: "Estructuras de uñas artificiales", description: "Construcción de formas y estructuras resistentes" },
+        { title: "Estructuras de salón", description: "Adaptación a diferentes tipos de clientes" },
+        { title: "Moldes y uso correcto", description: "Selección de moldes y aplicación perfecta" },
+        { title: "Tipos de uñas naturales", description: "Análisis y adaptación según la base natural" },
+        { title: "Bioseguridad y asepsia", description: "Protocolos de higiene en trabajos con químicos" },
+        { title: "Estructura de costes", description: "Cálculo de rentabilidad y precios profesionales" },
+        { title: "Tips y recomendaciones", description: "Consejos expertos para maximizar resultados" }
+      ],
+      includes: "Productos acrílico y polygel, moldes profesionales, pinceles de calidad y guía completa de diseño."
+    },
+    "lifting-pestanas": {
+      title: "Lifting de Pestañas",
+      durationHours: "8",
+      intro: "Curso para crear levantamiento y definición en pestañas naturales con un resultado elegante.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Evaluación de pestañas y diseño del lifting",
+        "Aplicación de soluciones técnicas y seguridad ocular",
+        "Tinte y mantenimiento de resultados",
+        "Atención personalizada por tipo de pelo"
+      ],
+      programa: [
+        { title: "Características del lifting", description: "Concepto y beneficios del lifting de pestañas" },
+        { title: "Materiales y herramientas", description: "Equipamiento necesario para lifting profesional" },
+        { title: "Productos químicos", description: "Soluciones de lifting, fijación y cuidado" },
+        { title: "Evaluación de pestañas", description: "Análisis correcto del estado y tipo de pestañas" },
+        { title: "Diseño y aplicación del lifting", description: "Paso a paso de la técnica de levantamiento" },
+        { title: "Tinte y acabado", description: "Aplicación de pigmento y resultado final perfecto" },
+        { title: "Tiempos de exposición", description: "Control de tiempos para resultados óptimos" },
+        { title: "Seguridad ocular", description: "Protocolos de protección durante el tratamiento" },
+        { title: "Mantenimiento postcuidado", description: "Consejos para prolongar resultados y cuidado de pestañas" }
+      ],
+      includes: "Kit de lifting completo, soluciones profesionales, tintes y protocolo de cuidados."
+    },
+    "extensiones-pestanas": {
+      title: "Extensiones de Pestañas Básico",
+      durationHours: "8",
+      intro: "Una base sólida en extensiones clásicas para ofrecer un resultado natural y seguro.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Adhesión correcta de extensiones clásicas",
+        "Selección de longitudes y curvaturas",
+        "Aplicación segura y acabado natural",
+        "Retiro y mantenimiento para clientas"
+      ],
+      programa: [
+        { title: "Características del sistema", description: "Extensiones clásicas vs otras técnicas" },
+        { title: "Materiales y productos", description: "Selección de extensiones y adhesivos profesionales" },
+        { title: "Herramientas necesarias", description: "Equipamiento para aplicación y mantenimiento" },
+        { title: "Evaluación de pestañas", description: "Análisis de salud y densidad de pestañas naturales" },
+        { title: "Técnica de aplicación", description: "Paso a paso para aplicación clásica correcta" },
+        { title: "Aislamiento y adherencia", description: "Técnica perfecta para máxima retención" },
+        { title: "Acabado y densidad", description: "Creación de volumen y naturalidad" },
+        { title: "Mantenimiento y retoques", description: "Protocolo de cuidado entre sesiones" },
+        { title: "Retiro seguro", description: "Técnica correcta para remover sin dañar pestañas" }
+      ],
+      includes: "Extensiones profesionales, adhesivos de calidad, herramientas especializadas y guía completa."
+    },
+    "diseno-cejas": {
+      title: "Diseño de Cejas y Tinte",
+      durationHours: "8",
+      intro: "Aprende a diseñar cejas con proporción, color y estilo adaptado a cada rostro.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Diseño facial y proporción natural",
+        "Mapeo y simetría profesional",
+        "Técnica de tinte con henna y tonos precisos",
+        "Consejos de mantenimiento para clientas"
+      ],
+      programa: [
+        { title: "Morfología facial", description: "Análisis de proporciones y características faciales" },
+        { title: "Teoría de color", description: "Selección de tonos según tipo de piel" },
+        { title: "Herramientas y materiales", description: "Equipamiento para diseño y tinte" },
+        { title: "Mapeo profesional", description: "Técnica de medición y diseño preciso" },
+        { title: "Aplicación de tinte con henna", description: "Paso a paso para color duradero" },
+        { title: "Perfilado y forma", description: "Creación de formas favorecedoras" },
+        { title: "Simetría y balance", description: "Técnicas para equilibrio perfecto" },
+        { title: "Tendencias actuales", description: "Diseños modernos y estilos en boga" },
+        { title: "Cuidados postcuidado", description: "Recomendaciones para prolongar resultados" }
+      ],
+      includes: "Materiales de medición, tintes profesionales, hennas y guía completa de color."
+    },
+    "powder-brows": {
+      title: "Powder Brows",
+      durationHours: "Duración a consultar",
+      intro: "Formación en un diseño suave de cejas con técnica de sombreado y acabado polvoso.",
+      badges: ["Práctica real", "Certificado incluido", "Kit profesional incluido"],
+      features: [
+        "Diseño de ceja soft powder",
+        "Técnica de sombreado y profundidad",
+        "Selección de color y estilo para cada clienta",
+        "Cuidado posaplicación y retoque"
+      ],
+      programa: [
+        { title: "Características del sistema", description: "Powder brows vs otras técnicas de maquillaje" },
+        { title: "Análisis de piel", description: "Evaluación para determinar idoneidad" },
+        { title: "Herramientas profesionales", description: "Equipamiento especializado para powder brows" },
+        { title: "Teoría del color", description: "Selección de tonos según características" },
+        { title: "Técnica de sombreado", description: "Paso a paso del efecto powder" },
+        { title: "Profundidad y densidad", description: "Control para resultado natural o intenso" },
+        { title: "Acabado perfecto", description: "Detalle final para resultado profesional" },
+        { title: "Cuidado postcuidado", description: "Protocolo de cuidado entre sesiones" },
+        { title: "Retoque y mantenimiento", description: "Programación de sesiones de retoque" }
+      ],
+      includes: "Formación práctica completa, materiales específicos para powder brows y monitoreo de resultados."
+    }
+  };
+
+  function renderCourseModal(courseId) {
+    if (!courseModal) return;
+    var course = courseDetails[courseId];
+    if (!course) return;
+    currentCourseId = courseId;
+    courseModalTitle.textContent = course.title;
+    
+    courseModalBadges.innerHTML = "";
+    if (course.badges) {
+      var badgesHTML = "";
+      badgesHTML += "<span class='modal__badge'>Duración: " + course.durationHours + " horas</span>";
+      course.badges.forEach(function (badge) {
+        badgesHTML += "<span class='modal__badge'>" + badge + "</span>";
+      });
+      courseModalBadges.innerHTML = badgesHTML;
+    }
+    
+    courseModalIntro.textContent = course.intro;
+    
+    courseModalFeatures.innerHTML = "";
+    course.features.forEach(function (item) {
+      var li = document.createElement("li");
+      li.textContent = item;
+      courseModalFeatures.appendChild(li);
+    });
+    
+    courseModalPrograma.innerHTML = "";
+    if (course.programa) {
+      course.programa.forEach(function (module) {
+        var moduleDiv = document.createElement("div");
+        moduleDiv.className = "modal__programa-item";
+        var titleElement = document.createElement("h4");
+        titleElement.textContent = module.title;
+        titleElement.className = "modal__programa-title";
+        var descElement = document.createElement("p");
+        descElement.textContent = module.description;
+        descElement.className = "modal__programa-desc";
+        moduleDiv.appendChild(titleElement);
+        moduleDiv.appendChild(descElement);
+        courseModalPrograma.appendChild(moduleDiv);
+      });
+    }
+    
+    courseModalIncludes.textContent = course.includes;
+  }
+  function openCourseModal(courseId, sourceButton) {
+    if (!courseModal) return;
+    renderCourseModal(courseId);
+    lastFocusedCourseButton = sourceButton || document.activeElement;
+    courseModal.classList.remove("is-hidden");
+    courseModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    if (courseModalClose) {
+      courseModalClose.focus();
+    }
+  }
+
+  function closeCourseModal() {
+    if (!courseModal) return;
+    courseModal.classList.add("is-hidden");
+    courseModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    currentCourseId = null;
+    if (lastFocusedCourseButton && typeof lastFocusedCourseButton.focus === "function") {
+      lastFocusedCourseButton.focus();
+    }
+  }
+
+  function openWhatsAppRequest() {
+    if (!currentCourseId) return;
+    var course = courseDetails[currentCourseId];
+    if (!course) return;
+    var message = "Hola, estoy interesada en el curso " + course.title + ". ¿Podéis enviarme información sobre fechas, precio y plazas disponibles?";
+    var url = "https://wa.me/34614529469?text=" + encodeURIComponent(message);
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
+
+  courseButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      openCourseModal(button.getAttribute("data-course-id"), button);
+    });
+  });
+
+  if (courseModalCloseIcon) {
+    courseModalCloseIcon.addEventListener("click", closeCourseModal);
+  }
+
+  if (courseModalCloseButton) {
+    courseModalCloseButton.addEventListener("click", closeCourseModal);
+  }
+
+  if (courseModalRequest) {
+    courseModalRequest.addEventListener("click", openWhatsAppRequest);
+  }
+
+  if (courseModal) {
+    courseModal.addEventListener("click", function (event) {
+      if (event.target === courseModal) {
+        closeCourseModal();
+      }
+    });
+  }
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape") return;
+    if (courseModal && !courseModal.classList.contains("is-hidden")) {
+      event.preventDefault();
+      closeCourseModal();
+    }
+  });
+
 })();
 
