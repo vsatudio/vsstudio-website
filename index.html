@@ -102,18 +102,10 @@
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#sobre">Estudio</a></li>
           <li><a href="#servicios">Servicios</a></li>
-          <li class="site-nav__item--reserva"><a href="#reserva">Reserva</a></li>
           <li><a href="#resenas-google">Reseñas</a></li>
-          <li><a href="#galeria">Galería</a></li>
-          <li class="site-nav__more">
-            <details class="site-nav__details" id="nav-more">
-              <summary class="site-nav__summary" aria-controls="nav-more-menu" aria-expanded="false">Más</summary>
-              <ul class="site-nav__sub" id="nav-more-menu">
-                <li><a href="#ubicacion">Ubicación</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-              </ul>
-            </details>
-          </li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
 
@@ -127,17 +119,19 @@
     <section class="hero" id="inicio" aria-labelledby="hero-title">
       <div class="hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Estudio de belleza · Madrid</p>
-          <h1 id="hero-title" class="hero__title">Belleza con manos expertas y formación que se nota en el resultado</h1>
-          <p class="hero__lead">
-            En <strong>VS Studio Beauty &amp; Academy</strong> unimos tratamientos de salón con una mirada profesional: técnica limpia, productos bien elegidos y un ambiente tranquilo donde el detalle importa. También formamos a quienes quieren construir carrera en estética, con práctica real y acompañamiento cercano.
-          </p>
+          <p class="eyebrow">Centro de Belleza y Formación Profesional</p>
+          <h1 id="hero-title" class="hero__title">Belleza, Formación y Resultados Reales</h1>
+          <p class="hero__subtitle">Especialistas en uñas, pestañas, cejas y formación profesional en Madrid.</p>
+          <p class="hero__lead">Servicios personalizados y cursos prácticos impartidos por profesionales con experiencia real.</p>
           <div class="hero__ctas">
-            <a class="btn btn--primary" href="https://www.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="hero-newtab-hint">Reservar en Treatwell</a>
-            <a class="btn btn--ghost" href="https://www.instagram.com/vsstudio_madrid" target="_blank" rel="noopener noreferrer" aria-describedby="hero-newtab-hint">Ver Instagram</a>
+            <a class="btn btn--primary" href="#reserva">Reservar cita</a>
+            <a class="btn btn--ghost" href="#cursos">Ver cursos</a>
           </div>
-          <p id="hero-newtab-hint" class="hero__newtab-hint">Treatwell e Instagram se abren en una pestaña nueva.</p>
-          <p class="hero__note">Reserva online en la plataforma que prefiráis — aquí os guiamos, no sustituimos vuestra agenda.</p>
+          <ul class="hero__benefits" aria-label="Ventajas de VS Studio">
+            <li>✓ Barrio del Pilar – Madrid</li>
+            <li>✓ Formación práctica</li>
+            <li>✓ Atención personalizada</li>
+          </ul>
         </div>
 
         <div class="hero__visual" role="presentation">
@@ -196,9 +190,9 @@
         </header>
 
         <div class="cursos__grid">
-          <article class="curso-card">
+          <article class="curso-card curso-card--unas">
+            <span class="curso-card__badge">Uñas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Manicura Profesional</h3>
             </div>
             <ul class="curso-card__list">
@@ -208,12 +202,12 @@
               <li>Reparación, refuerzo y acabado premium</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> prácticas guiadas, materiales de trabajo y guía de mantenimiento.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="manicura-profesional">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="manicura-profesional">Ver programa completo</button>
           </article>
 
-          <article class="curso-card">
+          <article class="curso-card curso-card--unas">
+            <span class="curso-card__badge">Uñas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Sistema Soft Gel</h3>
             </div>
             <ul class="curso-card__list">
@@ -223,12 +217,12 @@
               <li>Retirado y mantenimiento profesionales</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> kit de soft gel, práctica supervisada y fichas técnicas.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="soft-gel">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="soft-gel">Ver programa completo</button>
           </article>
 
-          <article class="curso-card">
+          <article class="curso-card curso-card--unas">
+            <span class="curso-card__badge">Uñas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Sistema Acrílico y Polygel</h3>
             </div>
             <ul class="curso-card__list">
@@ -238,12 +232,12 @@
               <li>Seguridad y durabilidad en servicio real</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> productos, moldes prácticos y guía de diseño.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="acrilico-polygel">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="acrilico-polygel">Ver programa completo</button>
           </article>
 
-          <article class="curso-card">
+          <article class="curso-card curso-card--pestanas">
+            <span class="curso-card__badge">Pestañas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Lifting de Pestañas</h3>
             </div>
             <ul class="curso-card__list">
@@ -253,12 +247,12 @@
               <li>Atención personalizada por tipo de pelo</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> kit de lifting, tintes y protocolo completo.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="lifting-pestanas">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="lifting-pestanas">Ver programa completo</button>
           </article>
 
-          <article class="curso-card">
+          <article class="curso-card curso-card--pestanas">
+            <span class="curso-card__badge">Pestañas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Extensiones de Pestañas Básico</h3>
             </div>
             <ul class="curso-card__list">
@@ -268,12 +262,12 @@
               <li>Retiro y mantenimiento para clientas</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> prácticas en modelo, adhesivos y guía técnica.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="extensiones-pestanas">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="extensiones-pestanas">Ver programa completo</button>
           </article>
 
-          <article class="curso-card">
+          <article class="curso-card curso-card--cejas">
+            <span class="curso-card__badge">Cejas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">8 h</p>
               <h3>Diseño de Cejas y Tinte</h3>
             </div>
             <ul class="curso-card__list">
@@ -283,12 +277,12 @@
               <li>Consejos de mantenimiento para clientas</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> materiales de medición, tintes y guía de color.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="diseno-cejas">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="diseno-cejas">Ver programa completo</button>
           </article>
 
-          <article class="curso-card curso-card--highlight">
+          <article class="curso-card curso-card--highlight curso-card--cejas">
+            <span class="curso-card__badge">Cejas</span>
             <div class="curso-card__head">
-              <p class="eyebrow eyebrow--on-dark">Duración a consultar</p>
               <h3>Powder Brows</h3>
             </div>
             <ul class="curso-card__list">
@@ -298,7 +292,7 @@
               <li>Cuidado posaplicación y retoque</li>
             </ul>
             <p class="curso-card__includes"><strong>Incluye:</strong> formación práctica, materiales específicos y monitoreo de resultados.</p>
-            <button type="button" class="btn btn--ghost btn--small curso-card__button" data-course-id="powder-brows">Ver programa completo</button>
+            <button type="button" class="btn btn--primary curso-card__button" data-course-id="powder-brows">Ver programa completo</button>
           </article>
         </div>
       </div>
