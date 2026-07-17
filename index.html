@@ -76,20 +76,13 @@
   =============================================================================
   -->
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#contenido-principal">Ir al contenido</a>
 
   <header class="site-header">
     <div class="header-inner">
-      <a class="wordmark wordmark--logo" href="#inicio" aria-label="VS Studio Beauty &amp; Academy, inicio">
-        <img
-          class="wordmark__img"
-          src="assets/logo-vs-studio-new.png"
-          alt=""
-          width="562"
-          height="550"
-          decoding="async"
-        />
+      <a class="wordmark wordmark--logo" href="index.html#inicio" aria-label="VS Studio Beauty &amp; Academy, inicio">
+        <img class="wordmark__img" src="assets/logo-vs-studio-new.png" alt="" width="562" height="550" decoding="async" />
       </a>
 
       <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
@@ -146,285 +139,137 @@
       </div>
     </section>
 
-    <section class="section section--sobre" id="sobre" aria-labelledby="sobre-title">
-      <div class="section__inner">
-        <header class="sobre__head">
-          <h2 id="sobre-title">Sobre VS Studio</h2>
-          <p class="section__kicker">Un estudio, dos vocaciones: cuidarte y enseñar a hacerlo bien.</p>
-        </header>
-        <div class="sobre__grid">
-          <div class="sobre__visual" role="presentation">
-            <figure class="sobre__figure">
-              <img
-                src="assets/equipo-vs-studio.png"
-                alt="Equipo de VS Studio Beauty &amp; Academy en el estudio"
-                width="1280"
-                height="800"
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
-          </div>
-          <div class="sobre__copy">
-            <div class="prose">
-              <p>
-                No buscamos el resultado “rápido y ya”. Trabajamos con calma: escuchamos qué os incomoda, qué estilo os encaja y qué tiempo real tenéis entre citas. Así ajustamos técnica, forma y mantenimiento — en uñas, mirada o piel — para que lo que veis en el espejo sea coherente con vuestro día a día.
-              </p>
-              <p>
-                El estudio es moderno y relajado, con un trato directo y profesional. Nos importa el acabado, la simetría cuando toca y la salud de la uña o la piel por encima del modismo de turno. Y si vienes a formarte, encontrarás una propuesta práctica: manos a la obra, correcciones al momento y espacio para preguntar sin prisa.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--cursos" id="cursos" aria-labelledby="cursos-title">
-      <div class="section__inner">
-        <header class="section__head">
-          <h2 id="cursos-title">Cursos Profesionales VS Studio</h2>
-          <p class="section__subtitle">Formación premium para profesionales que quieren dominar técnica, producto y acabado. Descubre cursos de uñas, pestañas y cejas pensados para tu práctica real.</p>
-        </header>
-
-        <div class="cursos__grid">
-          <article class="curso-card curso-card--unas">
-            <span class="curso-card__badge">Uñas</span>
-            <div class="curso-card__head">
-              <h3>Manicura Profesional</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Técnica avanzada de limado y perfilado</li>
-              <li>Preparación saludable de uñas naturales</li>
-              <li>Aplicación de semipermanente y decoración ligera</li>
-              <li>Reparación, refuerzo y acabado premium</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> prácticas guiadas, materiales de trabajo y guía de mantenimiento.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="manicura-profesional">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--unas">
-            <span class="curso-card__badge">Uñas</span>
-            <div class="curso-card__head">
-              <h3>Sistema Soft Gel</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Aplicación de soft gel con acabado natural</li>
-              <li>Esculpido, limado y formas modernas</li>
-              <li>Adhesión segura y preparación de superficie</li>
-              <li>Retirado y mantenimiento profesionales</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> kit de soft gel, práctica supervisada y fichas técnicas.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="soft-gel">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--unas">
-            <span class="curso-card__badge">Uñas</span>
-            <div class="curso-card__head">
-              <h3>Sistema Acrílico y Polygel</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Modelado en acrílico y polygel paso a paso</li>
-              <li>Transición entre técnicas y mantenimiento</li>
-              <li>Corrección de volumen y acabado suave</li>
-              <li>Seguridad y durabilidad en servicio real</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> productos, moldes prácticos y guía de diseño.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="acrilico-polygel">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--pestanas">
-            <span class="curso-card__badge">Pestañas</span>
-            <div class="curso-card__head">
-              <h3>Lifting de Pestañas</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Evaluación de pestañas y diseño del lifting</li>
-              <li>Aplicación de soluciones técnicas y seguridad ocular</li>
-              <li>Tinte y mantenimiento de resultados</li>
-              <li>Atención personalizada por tipo de pelo</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> kit de lifting, tintes y protocolo completo.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="lifting-pestanas">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--pestanas">
-            <span class="curso-card__badge">Pestañas</span>
-            <div class="curso-card__head">
-              <h3>Extensiones de Pestañas Básico</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Adhesión correcta de extensiones clásicas</li>
-              <li>Selección de longitudes y curvaturas</li>
-              <li>Aplicación segura y acabado natural</li>
-              <li>Retiro y mantenimiento para clientas</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> prácticas en modelo, adhesivos y guía técnica.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="extensiones-pestanas">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--cejas">
-            <span class="curso-card__badge">Cejas</span>
-            <div class="curso-card__head">
-              <h3>Diseño de Cejas y Tinte</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Diseño facial y proporción natural</li>
-              <li>Mapeo y simetría profesional</li>
-              <li>Técnica de tinte con henna y tonos precisos</li>
-              <li>Consejos de mantenimiento para clientas</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> materiales de medición, tintes y guía de color.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="diseno-cejas">Ver programa completo</button>
-          </article>
-
-          <article class="curso-card curso-card--highlight curso-card--cejas">
-            <span class="curso-card__badge">Cejas</span>
-            <div class="curso-card__head">
-              <h3>Powder Brows</h3>
-            </div>
-            <ul class="curso-card__list">
-              <li>Diseño de ceja soft powder</li>
-              <li>Técnica de sombreado y profundidad</li>
-              <li>Selección de color y estilo para cada clienta</li>
-              <li>Cuidado posaplicación y retoque</li>
-            </ul>
-            <p class="curso-card__includes"><strong>Incluye:</strong> formación práctica, materiales específicos y monitoreo de resultados.</p>
-            <button type="button" class="btn btn--primary curso-card__button" data-course-id="powder-brows">Ver programa completo</button>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--servicios" id="servicios" aria-labelledby="servicios-title">
-      <div class="section__inner">
-        <header class="section__head">
-          <h2 id="servicios-title">Servicios destacados</h2>
-          <p class="section__subtitle">Un vistazo rápido a lo que hacemos. Para pedir cita, id a <strong>Reserva online</strong>; después podéis ver la <strong>Galería</strong> y la <strong>Ubicación</strong>.</p>
-        </header>
-
-        <div class="service-grid">
-          <article class="service-card">
-            <h3>Uñas</h3>
-            <p>Manicura completa o express, esmalte tradicional o semipermanente, refuerzo con base rubber, soft gel, uñas en acrílico o poligel, rellenos, retiradas, decoración y reparación puntual — todo con forma y acabado que dure lo que vuestro día a día pida.</p>
-            <ul class="service-card__list">
-              <li>Manicura completa o express (tradicional / semi / base rubber)</li>
-              <li>Acrílico, poligel o soft gel · rellenos y mantenimiento</li>
-              <li>Retiradas, decoración extra y reparación puntual</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card">
-            <h3>Cejas</h3>
-            <p>Diseño con proporción y simetría, color cuando encaja y laminado para fijar el pelo con naturalidad — mirada ordenada sin perder expresión.</p>
-            <ul class="service-card__list">
-              <li>Diseño de cejas</li>
-              <li>Tinte de cejas con henna</li>
-              <li>Laminado de cejas</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card">
-            <h3>Pestañas</h3>
-            <p>Extensiones clásicas, efecto rimel, volumen 2D–6D y volumen ruso, más lifting con o sin tinte — de un look discreto a uno más intenso, siempre cuidando la salud del pelo.</p>
-            <ul class="service-card__list">
-              <li>Clásicas y efecto rimel</li>
-              <li>Volumen 2D/6D y volumen ruso</li>
-              <li>Lifting de pestañas con tinte o sin tinte</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card">
-            <h3>Pedicura</h3>
-            <p>Desde una pasada rápida hasta una sesión completa: limpieza, forma, esmalte tradicional o semi, y extras como AcriPie cuando el pie lo pida — pies listos para enseñar o para el día a día.</p>
-            <ul class="service-card__list">
-              <li>Express o completa · tradicional o semipermanente</li>
-              <li>Solo limpieza, limar y cortar o limpieza completa</li>
-              <li>AcriPie y cuidado del pie según lo que necesitéis</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card">
-            <h3>Facial</h3>
-            <p>Limpieza, hidratación y tratamientos faciales adaptados a vuestra piel: os explicamos pasos y tiempos antes de empezar para que respiréis y salgáis con la piel alineada con vuestra rutina.</p>
-            <ul class="service-card__list">
-              <li>Faciales según tipo de piel y objetivo</li>
-              <li>Rutina clara para el día a día o un evento</li>
-              <li>Comodidad y pasos comentados en salón</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card">
-            <h3>Depilación</h3>
-            <p>Cera profesional con protocolo higiénico claro: elegimos técnica y producto según zona y sensibilidad, para un resultado limpio y cómodo en pocas pasadas.</p>
-            <ul class="service-card__list">
-              <li>Rostro y cuerpo — os asesoramos según la zona</li>
-              <li>Cejas con cera o pinzas cuando encaje mejor</li>
-              <li>Axilas, piernas, ingles y más zonas bajo demanda</li>
-            </ul>
-            <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-          </article>
-
-          <article class="service-card service-card--span-2">
-            <h3>Cursos y formación</h3>
-            <p>
-              Formación en pestañas para quienes quieren oficio real: práctica guiada, corrección al momento y materiales explicados. En la agenda pública del centro constan, entre otras, estas formaciones intensivas (duraciones según ficha al reservar):
-            </p>
-            <ul class="service-card__list">
-              <li>Curso Lifting de Pestañas — 8 h</li>
-              <li>Curso Extensiones de Pestañas Básico — 16 h</li>
-              <li>Curso Extensiones de Pestañas Avanzado — 16 h</li>
-            </ul>
-            <p class="service-card__fine">Convocatorias y plazas: reservad el curso como cualquier otro servicio o escribidnos para dudas previas.</p>
-            <div class="service-card__actions">
-              <a class="btn btn--small btn--dark" href="#reserva">Reservar</a>
-              <a class="btn btn--small btn--ghost" href="#contacto">Información</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section--reserva" id="reserva" aria-labelledby="reserva-title">
+    <section class="section home-paths reveal-on-scroll" id="elige" aria-labelledby="elige-title">
       <div class="section__inner">
         <header class="section__head section__head--center">
-          <h2 id="reserva-title">Reserva online</h2>
-          <p class="section__subtitle">Reservad online con disponibilidad al instante, o escribidnos por <strong>WhatsApp</strong> para cuadrar horario. <strong>Elegid la opción</strong> que os encaje mejor.</p>
+          <p class="eyebrow">Dos formas de vivir VS Studio</p>
+          <h2 id="elige-title">¿Qué estás buscando?</h2>
+          <p class="section__subtitle">Cuida tu imagen con servicios profesionales o da el siguiente paso con una formación práctica.</p>
         </header>
-
-        <p class="reserva-firsttime">
-          ¿Primera vez? Si no sabéis si reservar en Treatwell o por WhatsApp, escribidnos y os orientamos sin compromiso.
-        </p>
-        <p id="reserva-newtab-hint" class="visually-hidden">Los enlaces de reserva se abren en una pestaña nueva.</p>
-
-        <div class="reserva-grid">
-       
-          <a class="reserva-card reserva-card--alt" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="reserva-newtab-hint">
-            <span class="reserva-card__label">Reservar en</span>
-            <span class="reserva-card__brand">
-              <img class="reserva-card__logo reserva-card__logo--treatwell" src="assets/reserva-icon-treatwell.svg" width="26" height="26" alt="" loading="lazy" decoding="async" />
-              Treatwell
-            </span>
-            <span class="reserva-card__hint">Tratamientos y ofertas del centro</span>
-          </a>
-          <a class="reserva-card reserva-card--whatsapp" href="https://wa.me/34614529469?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita%20en%20VS%20Studio" target="_blank" rel="noopener noreferrer" aria-describedby="reserva-newtab-hint">
-            <span class="reserva-card__label">Pedir cita por</span>
-            <span class="reserva-card__brand">
-              <img class="reserva-card__logo reserva-card__logo--whatsapp" src="assets/reserva-icon-whatsapp.svg" width="26" height="26" alt="" loading="lazy" decoding="async" />
-              WhatsApp
-            </span>
-            <span class="reserva-card__hint">Mensaje directo al estudio · +34 614 529 469</span>
-          </a>
+        <div class="home-paths__grid">
+          <article class="home-path-card reveal-on-scroll">
+            <img class="home-path-card__image" src="/assets/servicio-unas.png" alt="Servicio profesional de uñas en VS Studio" loading="lazy" decoding="async" />
+            <div class="home-path-card__content">
+              <h3>Servicios de belleza</h3>
+              <p>Uñas, pestañas, cejas, facial, pedicura y depilación con atención personalizada y acabados cuidados.</p>
+              <a class="btn btn--dark" href="servicios.html">Ver servicios</a>
+            </div>
+          </article>
+          <article class="home-path-card reveal-on-scroll">
+            <img class="home-path-card__image" src="/assets/ventaja-formacion-practica.png" alt="Formación práctica en la academia de VS Studio" loading="lazy" decoding="async" />
+            <div class="home-path-card__content">
+              <h3>Academia profesional</h3>
+              <p>Formación práctica en grupos reducidos, con kit, certificado y acompañamiento profesional.</p>
+              <a class="btn btn--dark" href="academia.html">Ver academia</a>
+            </div>
+          </article>
         </div>
-        <p class="reserva-footnote">Treatwell muestra huecos en vivo. Por WhatsApp os respondemos para cuadrar día y servicio; si lo preferís, después podéis formalizar también en la plataforma. Dudas sin cita: sección de contacto.</p>
       </div>
     </section>
 
-    <section class="section section--reviews-widget" id="resenas-google" aria-labelledby="reviews-widget-title">
+    <section class="section home-featured home-featured--services reveal-on-scroll" id="servicios" aria-labelledby="servicios-title">
+      <div class="section__inner">
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Una selección para ti</p>
+          <h2 id="servicios-title">Servicios destacados</h2>
+          <p class="section__subtitle">Tres formas de cuidarte con técnica profesional y atención al detalle.</p>
+        </header>
+        <div class="home-feature-grid">
+          <article class="home-feature-card reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/servicio-unas.png" alt="Servicio de uñas en VS Studio" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Uñas</h3>
+              <p>Manicura, refuerzo y sistemas profesionales con un acabado pensado para durar.</p>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+            </div>
+          </article>
+          <article class="home-feature-card reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/servicio-pestanas.png" alt="Servicio de pestañas en VS Studio" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Pestañas</h3>
+              <p>Lifting y extensiones adaptados a tu mirada, desde un efecto natural a uno más intenso.</p>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+            </div>
+          </article>
+          <article class="home-feature-card reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/servicio-facial.png" alt="Tratamiento facial en VS Studio" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Facial</h3>
+              <p>Tratamientos adaptados a tu piel para recuperar hidratación, equilibrio y luminosidad.</p>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+            </div>
+          </article>
+        </div>
+        <p class="home-section-cta"><a class="btn btn--ghost" href="servicios.html">Ver todos los servicios</a></p>
+      </div>
+    </section>
+
+    <section class="section home-featured home-featured--courses reveal-on-scroll" id="cursos" aria-labelledby="cursos-title">
+      <div class="section__inner">
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Aprende haciendo</p>
+          <h2 id="cursos-title">Cursos destacados</h2>
+          <p class="section__subtitle">Formaciones concretas para aprender técnica, ganar seguridad y trabajar con criterio profesional.</p>
+        </header>
+        <div class="home-feature-grid">
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/curso-manicura-profesional.png" alt="Curso de Manicura Profesional" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Manicura Profesional</h3>
+              <a class="btn btn--dark" href="academia.html#cursos">Ver curso</a>
+            </div>
+          </article>
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/curso-extensiones-pestanas-basico.png" alt="Curso de Extensiones de Pestañas Básico" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Extensiones de Pestañas Básico</h3>
+              <a class="btn btn--dark" href="academia.html#cursos">Ver curso</a>
+            </div>
+          </article>
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
+            <img class="home-feature-card__image" src="/assets/curso-diseno-cejas-tinte.png" alt="Curso de Diseño de Cejas y Tinte" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Diseño de Cejas y Tinte</h3>
+              <a class="btn btn--dark" href="academia.html#cursos">Ver curso</a>
+            </div>
+          </article>
+        </div>
+        <p class="home-section-cta"><a class="btn btn--ghost" href="academia.html#cursos">Ver todos los cursos</a></p>
+      </div>
+    </section>
+
+    <section class="section home-story reveal-on-scroll" id="sobre" aria-labelledby="sobre-title">
+      <div class="section__inner home-story__grid">
+        <div class="home-story__image-wrap">
+          <img class="home-story__image" src="/assets/equipo-vs-studio.png" alt="Equipo de VS Studio Beauty &amp; Academy" loading="lazy" decoding="async" />
+        </div>
+        <div class="home-story__content">
+          <p class="eyebrow">Centro de belleza y academia</p>
+          <h2 id="sobre-title">Belleza y formación con experiencia real</h2>
+          <p>En VS Studio unimos atención personalizada y formación práctica con profesionales que conocen el trabajo diario de salón. Estamos en Barrio del Pilar, Madrid, para cuidarte o ayudarte a convertir tu técnica en una profesión.</p>
+          <div class="home-story__actions">
+            <a class="btn btn--dark" href="servicios.html">Conocer servicios</a>
+            <a class="btn btn--ghost" href="academia.html">Conocer academia</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-trust reveal-on-scroll" aria-labelledby="confianza-title">
+      <div class="section__inner">
+        <header class="section__head section__head--center">
+          <h2 id="confianza-title">Una experiencia cuidada de principio a fin</h2>
+        </header>
+        <ul class="home-trust__grid">
+          <li>Atención personalizada</li>
+          <li>Formación práctica</li>
+          <li>Profesionales con experiencia</li>
+          <li>Barrio del Pilar, Madrid</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--reviews-widget reveal-on-scroll" id="resenas-google" aria-labelledby="reviews-widget-title">
       <div class="section__inner">
         <header class="section__head">
           <h2 id="reviews-widget-title">Reseñas de Google</h2>
@@ -457,45 +302,43 @@
       </div>
     </section>
 
-    <section class="section section--galeria" id="galeria" aria-labelledby="galeria-title">
+    <section class="section home-instagram reveal-on-scroll" id="galeria" aria-labelledby="galeria-title">
       <div class="section__inner">
-        <header class="section__head">
-          <h2 id="galeria-title">Galería</h2>
-          <p class="section__subtitle">
-            Trabajos recientes en <strong>@vsstudio_madrid</strong>. Deslizad o tocad cada publicación para verla en Instagram.
-          </p>
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Nuestro día a día</p>
+          <h2 id="galeria-title">Descubre nuestros trabajos y formaciones</h2>
+          <p class="section__subtitle">Síguenos en <strong>@vsstudio_madrid</strong></p>
         </header>
 
-        <div class="embed-frame embed-frame--lightwidget" aria-label="Galería: Instagram (LightWidget)" data-embed="lightwidget" aria-busy="true">
-          <div class="embed-skeleton" aria-hidden="true"></div>
-          <div class="embed-consent" data-third-party-placeholder="lightwidget" role="note" aria-label="Galería de Instagram: consentimiento">
-            <p><strong>Privacidad</strong>: para ver la galería de Instagram necesitamos vuestro permiso para cargar contenido de terceros.</p>
-            <p class="embed-consent__actions">
-              <button class="btn btn--primary btn--small" type="button" data-consent-action="accept">Aceptar y ver galería</button>
-              <a class="btn btn--ghost btn--small" href="https://www.instagram.com/vsstudio_madrid" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Abrir Instagram</a>
-            </p>
-          </div>
+        <div class="home-instagram__grid" id="instagram-feed">
+          <!-- LightWidget WIDGET -->
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
           <iframe
-            id="galeria-instagram-iframe"
-            class="embed-frame__iframe lightwidget-widget"
-            title="Galería de Instagram — VS Studio"
-            loading="lazy"
-            referrerpolicy="strict-origin-when-cross-origin"
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-            scrolling="yes"
+            src="https://cdn.lightwidget.com/widgets/4d7bcbe851a95ce4ac7a18267145183c.html"
+            scrolling="no"
             allowtransparency="true"
-            src="about:blank"
-            data-src="https://cdn.lightwidget.com/widgets/4d7bcbe851a95ce4ac7a18267145183c.html"
-          ></iframe>
+            class="lightwidget-widget"
+            style="width:100%;border:0;overflow:hidden;">
+          </iframe>
         </div>
 
-        <p class="galeria-feed__cta">
-          <a class="btn btn--primary" href="https://www.instagram.com/vsstudio_madrid" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Abrir @vsstudio_madrid en Instagram</a>
+        <p class="home-section-cta">
+          <a class="btn btn--dark" href="https://www.instagram.com/vsstudio_madrid" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Ver Instagram</a>
         </p>
+      </div>
+    </section>
 
-        <p class="section__subtitle section__subtitle--bridge">
-          A continuación encontráis <strong>ubicación y horario</strong>, con mapa, cómo llegar y el tramo de apertura para que planifiquéis la visita sin prisas.
-        </p>
+    <section class="section home-final-cta reveal-on-scroll" id="reserva" aria-labelledby="reserva-title">
+      <div class="section__inner home-final-cta__inner">
+        <div>
+          <p class="eyebrow eyebrow--on-dark">Tu próximo paso</p>
+          <h2 id="reserva-title">¿Buscas una cita o quieres formarte?</h2>
+          <p>Reserva tu servicio de belleza online o descubre la formación que mejor encaja con tu objetivo profesional.</p>
+        </div>
+        <div class="home-final-cta__actions">
+          <a class="btn btn--primary" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar cita</a>
+          <a class="btn btn--ghost-on-dark" href="academia.html#contacto">Solicitar información</a>
+        </div>
       </div>
     </section>
 
