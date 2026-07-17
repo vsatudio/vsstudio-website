@@ -501,6 +501,7 @@
   var courseModalBadges = document.getElementById("course-modal-badges");
   var courseModalPrograma = document.getElementById("course-modal-programa");
   var courseButtons = document.querySelectorAll("[data-course-id]");
+  var courseImages = document.querySelectorAll(".academy-page .curso-card__media");
   var lastFocusedCourseButton = null;
   var currentCourseId = null;
 
@@ -728,8 +729,8 @@
     courseModal.classList.remove("is-hidden");
     courseModal.setAttribute("aria-hidden", "false");
     document.body.style.overflow = "hidden";
-    if (courseModalClose) {
-      courseModalClose.focus();
+    if (courseModalCloseButton) {
+      courseModalCloseButton.focus();
     }
   }
 
@@ -756,6 +757,23 @@
   courseButtons.forEach(function (button) {
     button.addEventListener("click", function () {
       openCourseModal(button.getAttribute("data-course-id"), button);
+    });
+  });
+
+  courseImages.forEach(function (courseImage) {
+    function openFromImage() {
+      var courseButton = courseImage.closest(".curso-card").querySelector(".curso-card__button[data-course-id]");
+      if (courseButton) {
+        openCourseModal(courseButton.getAttribute("data-course-id"), courseImage);
+      }
+    }
+
+    courseImage.addEventListener("click", openFromImage);
+    courseImage.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openFromImage();
+      }
     });
   });
 
