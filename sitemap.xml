@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.vsstudiobeauty.com/</loc>
+    <loc>https://vsstudiobeauty.com/</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
-    <loc>https://www.vsstudiobeauty.com/aviso-legal.html</loc>
+    <loc>https://vsstudiobeauty.com/servicios.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
-    <loc>https://www.vsstudiobeauty.com/politica-de-privacidad.html</loc>
+    <loc>https://vsstudiobeauty.com/academia.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
   <url>
-    <loc>https://www.vsstudiobeauty.com/politica-de-cookies.html</loc>
+    <loc>https://vsstudiobeauty.com/aviso-legal.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://vsstudiobeauty.com/politica-de-privacidad.html</loc>
+    <lastmod>2026-07-22</lastmod>
+  </url>
+  <url>
+    <loc>https://vsstudiobeauty.com/politica-de-cookies.html</loc>
+    <lastmod>2026-07-22</lastmod>
   </url>
 </urlset>
