@@ -141,28 +141,149 @@
     <section class="section home-paths reveal-on-scroll" id="elige" aria-labelledby="elige-title">
       <div class="section__inner">
         <header class="section__head section__head--center">
-          <p class="eyebrow">Dos formas de vivir VS Studio</p>
-          <h2 id="elige-title">¿Qué estás buscando?</h2>
-          <p class="section__subtitle">Cuida tu imagen con servicios profesionales o da el siguiente paso con una formación práctica.</p>
+          <p class="eyebrow">Beauty &amp; Academy</p>
+          <h2 id="elige-title">¿Qué buscas hoy?</h2>
+          <p class="section__subtitle">Elige la experiencia de VS Studio que mejor encaja contigo.</p>
         </header>
         <div class="home-paths__grid">
-          <article class="home-path-card reveal-on-scroll">
-            <img class="home-path-card__image" src="/assets/servicio-unas.png" alt="Servicio profesional de uñas en VS Studio" loading="lazy" decoding="async" />
-            <div class="home-path-card__content">
-              <h3>Servicios de belleza</h3>
-              <p>Uñas, pestañas, cejas, facial, pedicura y depilación con atención personalizada y acabados cuidados.</p>
-              <a class="btn btn--dark" href="servicios.html">Ver servicios</a>
-            </div>
-          </article>
-          <article class="home-path-card reveal-on-scroll">
+          <a class="home-path-card home-path-card--link reveal-on-scroll" href="academia.html" aria-label="Quiero aprender: descubrir las formaciones profesionales">
             <img class="home-path-card__image" src="/assets/ventaja-formacion-practica.png" alt="Formación práctica en la academia de VS Studio" loading="lazy" decoding="async" />
             <div class="home-path-card__content">
-              <h3>Academia profesional</h3>
-              <p>Formación práctica en grupos reducidos, con kit, certificado y acompañamiento profesional.</p>
-              <a class="btn btn--dark" href="academia.html">Ver academia</a>
+              <h3>Quiero aprender</h3>
+              <p>Descubre nuestras formaciones profesionales y próximas convocatorias.</p>
+              <span class="btn btn--dark" aria-hidden="true">Ver academia</span>
+            </div>
+          </a>
+          <a class="home-path-card home-path-card--link reveal-on-scroll" href="servicios.html" aria-label="Quiero reservar un tratamiento: descubrir los servicios de belleza">
+            <img class="home-path-card__image" src="/assets/servicio-unas.png" alt="Servicio profesional de uñas en VS Studio" loading="lazy" decoding="async" />
+            <div class="home-path-card__content">
+              <h3>Quiero reservar un tratamiento</h3>
+              <p>Descubre nuestros servicios de uñas, pestañas, cejas y estética.</p>
+              <span class="btn btn--dark" aria-hidden="true">Ver servicios</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section home-featured home-featured--courses reveal-on-scroll" id="cursos" aria-labelledby="cursos-title">
+      <div class="section__inner">
+        <header class="section__head section__head--center">
+          <p class="eyebrow">Aprende haciendo</p>
+          <h2 id="cursos-title">Cursos destacados</h2>
+          <p class="section__subtitle">Formaciones concretas para aprender técnica, ganar seguridad y trabajar con criterio profesional.</p>
+        </header>
+        <div class="home-feature-grid">
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll" data-home-course-accordion="manicura">
+            <img class="home-feature-card__image" src="/assets/curso-manicura-profesional.png" alt="Curso de Manicura Profesional" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Manicura Profesional</h3>
+              <button class="home-course-toggle" id="home-course-toggle-manicura" type="button" aria-expanded="false" aria-controls="home-course-details-panel" data-home-course-target="manicura">
+                <span>Ver detalles</span><span class="home-course-toggle__icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+          </article>
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll" data-home-course-accordion="nail-art">
+            <img class="home-feature-card__image" src="/assets/servicio-unas.png" alt="Masterclass de Nail Art" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Masterclass de Nail Art</h3>
+              <button class="home-course-toggle" id="home-course-toggle-nail-art" type="button" aria-expanded="false" aria-controls="home-course-details-panel" data-home-course-target="nail-art">
+                <span>Ver detalles</span><span class="home-course-toggle__icon" aria-hidden="true">+</span>
+              </button>
+            </div>
+          </article>
+          <article class="home-feature-card home-feature-card--course reveal-on-scroll" data-home-course-accordion="pestanas">
+            <img class="home-feature-card__image" src="/assets/servicio-pestanas.png" alt="Curso Profesional de Extensiones de Pestañas" loading="lazy" decoding="async" />
+            <div class="home-feature-card__content">
+              <h3>Curso Profesional de Extensiones de Pestañas</h3>
+              <button class="home-course-toggle" id="home-course-toggle-pestanas" type="button" aria-expanded="false" aria-controls="home-course-details-panel" data-home-course-target="pestanas">
+                <span>Ver detalles</span><span class="home-course-toggle__icon" aria-hidden="true">+</span>
+              </button>
             </div>
           </article>
         </div>
+        <div class="home-course-panel" id="home-course-details-panel" role="region" aria-label="Detalles del curso seleccionado" aria-hidden="true" inert>
+          <div class="home-course-panel__inner">
+            <button class="home-course-panel__close" type="button" aria-label="Cerrar detalles del curso">&times;</button>
+
+            <div class="home-course-panel__course" data-home-course-panel="manicura" hidden>
+              <div class="home-course-panel__summary">
+                <h3>Manicura Profesional</h3>
+                <dl class="home-course-panel__facts">
+                  <div><dt>Duración</dt><dd>8 horas (1 día)</dd></div>
+                  <div><dt>Precio</dt><dd>250 €</dd></div>
+                  <div><dt>Nivel</dt><dd>Principiantes</dd></div>
+                </dl>
+              </div>
+              <div class="home-course-panel__includes">
+                <h4>Qué incluye</h4>
+                <ul>
+                  <li>Material durante la formación</li>
+                  <li>Diploma</li>
+                  <li>Prácticas guiadas</li>
+                  <li>Grupo reducido</li>
+                  <li>Soporte posterior</li>
+                </ul>
+              </div>
+              <div class="home-course-panel__actions">
+                <a class="btn btn--dark" href="curso-manicura-profesional-madrid.html">Ver curso</a>
+                <a class="btn btn--ghost" href="https://wa.me/34614529469?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20curso%20de%20manicura%20profesional%20de%208%20horas." target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Consultar por WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="home-course-panel__course" data-home-course-panel="nail-art" hidden>
+              <div class="home-course-panel__summary">
+                <h3>Masterclass de Nail Art</h3>
+                <dl class="home-course-panel__facts">
+                  <div><dt>Duración</dt><dd>4 horas</dd></div>
+                  <div><dt>Precio</dt><dd>99 €</dd></div>
+                  <div><dt>Nivel</dt><dd>Conocimientos básicos de manicura y nivel profesional</dd></div>
+                </dl>
+              </div>
+              <div class="home-course-panel__includes">
+                <h4>Qué incluye</h4>
+                <ul>
+                  <li>Material durante la formación</li>
+                  <li>Prácticas guiadas</li>
+                  <li>Atención personalizada</li>
+                  <li>Grupo reducido</li>
+                  <li>Diploma de participación</li>
+                  <li>Soporte posterior</li>
+                </ul>
+              </div>
+              <div class="home-course-panel__actions">
+                <a class="btn btn--dark" href="masterclass-nail-art-madrid.html">Ver curso</a>
+                <a class="btn btn--ghost" href="https://wa.me/34614529469?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Masterclass%20de%20Nail%20Art%20de%204%20horas%20por%2099%20%E2%82%AC." target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Consultar por WhatsApp</a>
+              </div>
+            </div>
+
+            <div class="home-course-panel__course" data-home-course-panel="pestanas" hidden>
+              <div class="home-course-panel__summary">
+                <h3>Curso Profesional de Extensiones de Pestañas</h3>
+                <dl class="home-course-panel__facts">
+                  <div><dt>Duración</dt><dd>16 horas</dd></div>
+                  <div><dt>Precio</dt><dd>350 €</dd></div>
+                  <div><dt>Nivel</dt><dd>Formación completa desde nivel inicial hasta técnicas profesionales</dd></div>
+                </dl>
+              </div>
+              <div class="home-course-panel__includes">
+                <h4>Qué incluye</h4>
+                <ul>
+                  <li>Kit de trabajo</li>
+                  <li>Certificado</li>
+                  <li>Práctica guiada</li>
+                  <li>Material didáctico</li>
+                  <li>Acompañamiento</li>
+                </ul>
+              </div>
+              <div class="home-course-panel__actions">
+                <a class="btn btn--dark" href="curso-extensiones-pestanas-madrid.html">Ver curso</a>
+                <a class="btn btn--ghost" href="https://wa.me/34614529469?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20el%20Curso%20Profesional%20de%20Extensiones%20de%20Pesta%C3%B1as%20de%2016%20horas%20por%20350%20%E2%82%AC." target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Consultar por WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="home-section-cta"><a class="btn btn--ghost" href="academia.html#cursos">Ver todos los cursos</a></p>
       </div>
     </section>
 
@@ -200,40 +321,6 @@
           </article>
         </div>
         <p class="home-section-cta"><a class="btn btn--ghost" href="servicios.html">Ver todos los servicios</a></p>
-      </div>
-    </section>
-
-    <section class="section home-featured home-featured--courses reveal-on-scroll" id="cursos" aria-labelledby="cursos-title">
-      <div class="section__inner">
-        <header class="section__head section__head--center">
-          <p class="eyebrow">Aprende haciendo</p>
-          <h2 id="cursos-title">Cursos destacados</h2>
-          <p class="section__subtitle">Formaciones concretas para aprender técnica, ganar seguridad y trabajar con criterio profesional.</p>
-        </header>
-        <div class="home-feature-grid">
-          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
-            <img class="home-feature-card__image" src="/assets/curso-manicura-profesional.png" alt="Curso de Manicura Profesional" loading="lazy" decoding="async" />
-            <div class="home-feature-card__content">
-              <h3>Manicura Profesional</h3>
-              <a class="btn btn--dark" href="curso-manicura-profesional-madrid.html">Ver curso</a>
-            </div>
-          </article>
-          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
-            <img class="home-feature-card__image" src="/assets/servicio-unas.png" alt="Masterclass de Nail Art" loading="lazy" decoding="async" />
-            <div class="home-feature-card__content">
-              <h3>Masterclass de Nail Art</h3>
-              <a class="btn btn--dark" href="masterclass-nail-art-madrid.html">VER CURSO</a>
-            </div>
-          </article>
-          <article class="home-feature-card home-feature-card--course reveal-on-scroll">
-            <img class="home-feature-card__image" src="/assets/servicio-pestanas.png" alt="Curso Profesional de Extensiones de Pestañas" loading="lazy" decoding="async" />
-            <div class="home-feature-card__content">
-              <h3>Curso Profesional de Extensiones de Pestañas</h3>
-              <a class="btn btn--dark" href="curso-extensiones-pestanas-madrid.html">Ver curso</a>
-            </div>
-          </article>
-        </div>
-        <p class="home-section-cta"><a class="btn btn--ghost" href="academia.html#cursos">Ver todos los cursos</a></p>
       </div>
     </section>
 
@@ -594,6 +681,6 @@
 
   <!-- Widgets de terceros (Elfsight/LightWidget/Maps): se cargan tras consentimiento -->
   <script src="assets/js/business-hours.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=course-panel-1" defer></script>
 </body>
 </html>

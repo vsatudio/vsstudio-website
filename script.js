@@ -810,6 +810,98 @@
 (function () {
   "use strict";
 
+  var courseCards = Array.from(document.querySelectorAll("[data-home-course-accordion]"));
+  var coursePanel = document.querySelector("#home-course-details-panel");
+  var coursePanelClose = coursePanel ? coursePanel.querySelector(".home-course-panel__close") : null;
+  var coursePanelContents = coursePanel ? Array.from(coursePanel.querySelectorAll("[data-home-course-panel]")) : [];
+  if (!courseCards.length || !coursePanel || !coursePanelClose || !coursePanelContents.length) return;
+
+  document.documentElement.classList.add("course-accordion-ready");
+  var activeCourseId = null;
+
+  function updateCourseCards(courseId) {
+    courseCards.forEach(function (card) {
+      var isActive = card.getAttribute("data-home-course-accordion") === courseId;
+      var toggle = card.querySelector(".home-course-toggle");
+      card.classList.toggle("is-active", isActive);
+      if (toggle) toggle.setAttribute("aria-expanded", String(isActive));
+    });
+  }
+
+  function showCourseContent(courseId) {
+    coursePanelContents.forEach(function (content) {
+      content.hidden = content.getAttribute("data-home-course-panel") !== courseId;
+    });
+  }
+
+  function closeCoursePanel(restoreFocus) {
+    var activeCard = courseCards.find(function (card) {
+      return card.getAttribute("data-home-course-accordion") === activeCourseId;
+    });
+    var activeToggle = activeCard ? activeCard.querySelector(".home-course-toggle") : null;
+
+    activeCourseId = null;
+    updateCourseCards(null);
+    coursePanel.classList.remove("is-open");
+    coursePanel.setAttribute("aria-hidden", "true");
+    coursePanel.setAttribute("inert", "");
+
+    if (restoreFocus && activeToggle) activeToggle.focus();
+  }
+
+  function toggleCourseCard(card) {
+    var courseId = card.getAttribute("data-home-course-accordion");
+    if (!courseId) return;
+
+    if (activeCourseId === courseId) {
+      closeCoursePanel(false);
+      return;
+    }
+
+    activeCourseId = courseId;
+    updateCourseCards(courseId);
+    showCourseContent(courseId);
+    coursePanel.removeAttribute("inert");
+    coursePanel.setAttribute("aria-hidden", "false");
+    coursePanel.classList.add("is-open");
+  }
+
+  courseCards.forEach(function (card) {
+    var toggle = card.querySelector(".home-course-toggle");
+    if (!toggle) return;
+
+    toggle.addEventListener("click", function (event) {
+      event.stopPropagation();
+      toggleCourseCard(card);
+    });
+
+    toggle.addEventListener("keydown", function (event) {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      event.stopPropagation();
+      toggleCourseCard(card);
+    });
+
+    card.addEventListener("click", function (event) {
+      if (event.target.closest("a, button")) return;
+      toggleCourseCard(card);
+    });
+  });
+
+  coursePanelClose.addEventListener("click", function () {
+    closeCoursePanel(true);
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key !== "Escape" || !activeCourseId) return;
+    event.preventDefault();
+    closeCoursePanel(true);
+  });
+})();
+
+(function () {
+  "use strict";
+
   var homePage = document.querySelector(".home-page");
   if (!homePage) return;
 
