@@ -76,11 +76,13 @@
   -->
 </head>
 <body class="home-page">
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
   <a class="skip-link" href="#contenido-principal">Ir al contenido</a>
 
-  <header class="site-header">
+  <header class="site-header" id="site-header">
     <div class="header-inner">
-      <a class="wordmark wordmark--logo" href="index.html#inicio" aria-label="VS Studio Beauty &amp; Academy, inicio">
+      <a class="wordmark wordmark--logo" href="#inicio" aria-label="VS Studio Beauty &amp; Academy, inicio" data-cursor>
         <img class="wordmark__img" src="assets/logo-vs-studio-new.png" alt="" width="562" height="550" decoding="async" />
       </a>
 
@@ -91,14 +93,14 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
-          <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
-          <li><a href="academia.html">Academia</a></li>
-          <li><a href="index.html#contacto">Contacto</a></li>
+          <li><a href="#inicio" data-cursor>Inicio</a></li>
+          <li><a href="servicios.html" data-cursor>Servicios</a></li>
+          <li><a href="academia.html" data-cursor>Academia</a></li>
+          <li><a href="#contacto" data-cursor>Contacto</a></li>
         </ul>
       </nav>
 
-      <a class="btn btn--primary btn--header" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/">Reservar ahora</a>
+      <a class="btn btn--primary btn--header" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" data-cursor>Reservar ahora</a>
     </div>
     <div class="site-header__backdrop" id="nav-backdrop" aria-hidden="true"></div>
   </header>
@@ -106,24 +108,41 @@
   <main id="contenido-principal" tabindex="-1">
     <p id="page-ext-hint" class="visually-hidden">Instagram, WhatsApp, Treatwell y Google Maps se abren en una pestaña nueva.
     <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__blob hero__blob--one"></span>
+        <span class="hero__blob hero__blob--two"></span>
+        <svg class="hero__strokes" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M -50 620 C 250 520, 500 700, 900 560 S 1300 480, 1300 480" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.35" />
+          <path d="M -50 700 C 300 640, 600 760, 950 630 S 1300 600, 1300 600" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.2" />
+        </svg>
+      </div>
       <div class="hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Centro de Belleza y Formación Profesional</p>
-          <h1 id="hero-title" class="hero__title">Belleza, Formación y Resultados Reales</h1>
-          <p class="hero__subtitle">Especialistas en uñas, pestañas, cejas y formación profesional en Madrid.</p>
-          <p class="hero__lead">Servicios personalizados y cursos prácticos impartidos por profesionales con experiencia real.</p>
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <p class="eyebrow">Centro de Belleza y Formación Profesional</p>
+          </div>
+          <h1 id="hero-title" class="hero__title">
+            <span class="hero__title-line"><span>Belleza, Formación y</span></span>
+            <span class="hero__title-line"><span>Resultados <em>Reales</em></span></span>
+          </h1>
+          <div class="hero__text">
+            <p class="hero__subtitle">Especialistas en uñas, pestañas, cejas y formación profesional en Madrid.</p>
+            <p class="hero__lead">Servicios personalizados y cursos prácticos impartidos por profesionales con experiencia real.</p>
+          </div>
           <div class="hero__ctas">
-            <a class="btn btn--primary" href="#reserva">Reservar cita</a>
-            <a class="btn btn--ghost" href="#cursos">Ver cursos</a>
+            <a class="btn btn--primary" href="#reserva" data-cursor>Reservar cita</a>
+            <a class="btn btn--ghost" href="#cursos" data-cursor>Ver cursos</a>
           </div>
           <ul class="hero__benefits" aria-label="Ventajas de VS Studio">
-            <li>✓ Barrio del Pilar – Madrid</li>
-            <li>✓ Formación práctica</li>
-            <li>✓ Atención personalizada</li>
+            <li><span class="hero__benefits-check" aria-hidden="true">✓</span> Barrio del Pilar – Madrid</li>
+            <li><span class="hero__benefits-check" aria-hidden="true">✓</span> Formación práctica</li>
+            <li><span class="hero__benefits-check" aria-hidden="true">✓</span> Atención personalizada</li>
           </ul>
         </div>
 
         <div class="hero__visual" role="presentation">
+          <div class="hero__figure-glow" aria-hidden="true"></div>
           <figure class="hero__figure">
             <img
               src="assets/hero-inicio.png"
@@ -136,7 +155,26 @@
           </figure>
         </div>
       </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Descubre</span>
+        <span class="hero__scroll-stem"></span>
+      </div>
     </section>
+
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+      </div>
+    </div>
 
     <section class="section home-paths reveal-on-scroll" id="elige" aria-labelledby="elige-title">
       <div class="section__inner">
@@ -146,20 +184,22 @@
           <p class="section__subtitle">Elige la experiencia de VS Studio que mejor encaja contigo.</p>
         </header>
         <div class="home-paths__grid">
-          <a class="home-path-card home-path-card--link reveal-on-scroll" href="academia.html" aria-label="Quiero aprender: descubrir las formaciones profesionales">
+          <a class="home-path-card home-path-card--link home-path-card--academy reveal-on-scroll" href="academia.html" aria-label="Quiero aprender: descubrir las formaciones profesionales" data-cursor>
+            <span class="home-path-card__num" aria-hidden="true">01</span>
             <img class="home-path-card__image" src="/assets/ventaja-formacion-practica.png" alt="Formación práctica en la academia de VS Studio" loading="lazy" decoding="async" />
             <div class="home-path-card__content">
               <h3>Quiero aprender</h3>
               <p>Descubre nuestras formaciones profesionales y próximas convocatorias.</p>
-              <span class="btn btn--dark" aria-hidden="true">Ver academia</span>
+              <span class="home-path-card__cta">Ver academia <span class="home-path-card__arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
-          <a class="home-path-card home-path-card--link reveal-on-scroll" href="servicios.html" aria-label="Quiero reservar un tratamiento: descubrir los servicios de belleza">
+          <a class="home-path-card home-path-card--link home-path-card--beauty reveal-on-scroll" href="servicios.html" aria-label="Quiero reservar un tratamiento: descubrir los servicios de belleza" data-cursor>
+            <span class="home-path-card__num" aria-hidden="true">02</span>
             <img class="home-path-card__image" src="/assets/servicio-unas.png" alt="Servicio profesional de uñas en VS Studio" loading="lazy" decoding="async" />
             <div class="home-path-card__content">
               <h3>Quiero reservar un tratamiento</h3>
               <p>Descubre nuestros servicios de uñas, pestañas, cejas y estética.</p>
-              <span class="btn btn--dark" aria-hidden="true">Ver servicios</span>
+              <span class="home-path-card__cta">Ver servicios <span class="home-path-card__arrow" aria-hidden="true">→</span></span>
             </div>
           </a>
         </div>
@@ -296,31 +336,34 @@
         </header>
         <div class="home-feature-grid">
           <article class="home-feature-card reveal-on-scroll">
+            <span class="home-feature-card__index" aria-hidden="true">01</span>
             <img class="home-feature-card__image" src="/assets/servicio-unas.png" alt="Servicio de uñas en VS Studio" loading="lazy" decoding="async" />
             <div class="home-feature-card__content">
               <h3>Uñas</h3>
               <p>Manicura, refuerzo y sistemas profesionales con un acabado pensado para durar.</p>
-              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint" data-cursor>Reservar</a>
             </div>
           </article>
           <article class="home-feature-card reveal-on-scroll">
+            <span class="home-feature-card__index" aria-hidden="true">02</span>
             <img class="home-feature-card__image" src="/assets/servicio-pestanas.png" alt="Servicio de pestañas en VS Studio" loading="lazy" decoding="async" />
             <div class="home-feature-card__content">
               <h3>Pestañas</h3>
               <p>Lifting y extensiones adaptados a tu mirada, desde un efecto natural a uno más intenso.</p>
-              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint" data-cursor>Reservar</a>
             </div>
           </article>
           <article class="home-feature-card reveal-on-scroll">
+            <span class="home-feature-card__index" aria-hidden="true">03</span>
             <img class="home-feature-card__image" src="/assets/servicio-facial.png" alt="Tratamiento facial en VS Studio" loading="lazy" decoding="async" />
             <div class="home-feature-card__content">
               <h3>Facial</h3>
               <p>Tratamientos adaptados a tu piel para recuperar hidratación, equilibrio y luminosidad.</p>
-              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Reservar</a>
+              <a class="btn btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint" data-cursor>Reservar</a>
             </div>
           </article>
         </div>
-        <p class="home-section-cta"><a class="btn btn--ghost" href="servicios.html">Ver todos los servicios</a></p>
+        <p class="home-section-cta"><a class="btn btn--ghost" href="servicios.html" data-cursor>Ver todos los servicios</a></p>
       </div>
     </section>
 
