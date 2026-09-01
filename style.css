@@ -1295,10 +1295,19 @@ main section[id] {
 }
 
 @media (max-width: 899px) {
+  .hero__grid {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero__copy {
+    order: 1 !important;
+  }
+
   .hero__visual {
     max-width: 360px;
     margin: 0 auto;
-    order: -1;
+    order: 2 !important;
   }
 }
 
