@@ -962,6 +962,60 @@
 (function () {
   "use strict";
 
+  var pageRoot = document.querySelector(".academy-page, .services-page");
+  if (!pageRoot) return;
+
+  var revealSelectors = [
+    "main > .section:not(.hero)",
+    "main .section__head",
+    "main .service-card",
+    "main .benefit-card",
+    "main .curso-card",
+    "main .sobre__figure"
+  ];
+
+  pageRoot.querySelectorAll(revealSelectors.join(",")).forEach(function (item) {
+    item.classList.add("reveal-on-scroll");
+  });
+
+  pageRoot.querySelectorAll(".service-grid, .benefits-grid, .cursos__grid").forEach(function (group) {
+    Array.from(group.children).forEach(function (item, index) {
+      item.style.setProperty("--reveal-delay", String((index % 3) * 90) + "ms");
+    });
+  });
+
+  var revealItems = pageRoot.querySelectorAll(".reveal-on-scroll");
+  if (!revealItems.length) return;
+
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    revealItems.forEach(function (item) {
+      item.classList.add("is-visible");
+    });
+    return;
+  }
+
+  document.documentElement.classList.add("reveal-ready");
+
+  var revealObserver = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    rootMargin: "0px 0px -8% 0px",
+    threshold: 0.12
+  });
+
+  revealItems.forEach(function (item) {
+    revealObserver.observe(item);
+  });
+})();
+
+(function () {
+  "use strict";
+
   var header = document.querySelector(".site-header");
   if (!header) return;
 

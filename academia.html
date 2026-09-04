@@ -52,7 +52,7 @@
   <link rel="preload" href="assets/hero-inicio.png" as="image" type="image/png" />
   <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=hero-ticker-reveal-1" />
   <!--
   =============================================================================
   BLOQUE DE ENLACES Y DATOS EDITABLES (VS Studio Beauty & Academy)
@@ -88,8 +88,8 @@
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
           <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="academia.html">Academia</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -103,12 +103,28 @@
     <p id="page-ext-hint" class="visually-hidden">Instagram, WhatsApp, Treatwell y Google Maps se abren en una pestaña nueva.</p>
 
     <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__blob hero__blob--one"></span>
+        <span class="hero__blob hero__blob--two"></span>
+        <svg class="hero__strokes" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M -50 620 C 250 520, 500 700, 900 560 S 1300 480, 1300 480" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.35" />
+          <path d="M -50 700 C 300 640, 600 760, 950 630 S 1300 600, 1300 600" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.2" />
+        </svg>
+      </div>
       <div class="hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Formación profesional en Madrid</p>
-          <h1 id="hero-title" class="hero__title">Academia de belleza y formación profesional en Madrid</h1>
-          <p class="hero__subtitle">Formación práctica, grupos reducidos, certificado y trabajo real para dominar uñas, pestañas y cejas.</p>
-          <p class="hero__lead">Aprende con un enfoque práctico y acompaña tus primeras horas de trabajo con un equipo que conoce la realidad del salón.</p>
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <p class="eyebrow">Formación profesional en Madrid</p>
+          </div>
+          <h1 id="hero-title" class="hero__title">
+            <span class="hero__title-line"><span>Academia de belleza y</span></span>
+            <span class="hero__title-line"><span>formación profesional en Madrid</span></span>
+          </h1>
+          <div class="hero__text">
+            <p class="hero__subtitle">Formación práctica, grupos reducidos, certificado y trabajo real para dominar uñas, pestañas y cejas.</p>
+            <p class="hero__lead">Aprende con un enfoque práctico y acompaña tus primeras horas de trabajo con un equipo que conoce la realidad del salón.</p>
+          </div>
           <div class="hero__ctas">
             <a class="btn btn--primary" href="#cursos">Ver cursos</a>
             <a class="btn btn--ghost" href="#contacto">Solicitar información</a>
@@ -116,12 +132,32 @@
         </div>
 
         <div class="hero__visual" role="presentation">
+          <div class="hero__figure-glow" aria-hidden="true"></div>
           <figure class="hero__figure">
             <img src="assets/hero-inicio.png" alt="Interior del estudio: recepción y zona de trabajo luminosa" width="746" height="1024" loading="eager" fetchpriority="high" />
           </figure>
         </div>
       </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Descubre</span>
+        <span class="hero__scroll-stem"></span>
+      </div>
     </section>
+
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+      </div>
+    </div>
 
     <section class="section section--sobre" aria-labelledby="academia-title">
       <div class="section__inner">
@@ -201,7 +237,7 @@
         <div class="cursos__grid">
           <article class="curso-card curso-card--unas">
             <figure class="curso-card__media">
-              <img src="/assets/curso-manicura-profesional.png" alt="Curso de manicura profesional en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
+              <img src="/assets/curso-manicura-profesional-new.png" alt="Curso de manicura profesional en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
             </figure>
             <div class="curso-card__body">
               <div class="curso-card__head">
@@ -214,7 +250,7 @@
 
           <article class="curso-card curso-card--unas">
             <figure class="curso-card__media" style="aspect-ratio:1122/1402;overflow:hidden;">
-              <img src="/assets/servicio-unas.png" alt="Manicura artística para la Masterclass de Nail Art en VS Studio" style="display:block;width:100%;height:100%;object-fit:cover;opacity:1;visibility:visible;" />
+              <img src="/assets/curso-nail-art-new.png" alt="Manicura artística para la Masterclass de Nail Art en VS Studio" style="display:block;width:100%;height:100%;object-fit:cover;opacity:1;visibility:visible;" />
             </figure>
             <div class="curso-card__body">
               <div class="curso-card__head">
@@ -227,7 +263,7 @@
 
           <article class="curso-card curso-card--pestanas">
             <figure class="curso-card__media" style="aspect-ratio:1122/1402;overflow:hidden;">
-              <img src="/assets/servicio-pestanas.png" alt="Curso profesional de extensiones de pestañas en VS Studio" style="display:block;width:100%;height:100%;object-fit:cover;opacity:1;visibility:visible;" />
+              <img src="/assets/curso-extensiones-pestanas-new.png" alt="Curso profesional de extensiones de pestañas en VS Studio" style="display:block;width:100%;height:100%;object-fit:cover;opacity:1;visibility:visible;" />
             </figure>
             <div class="curso-card__body">
               <div class="curso-card__head">
@@ -253,7 +289,7 @@
 
           <article class="curso-card curso-card--pestanas">
             <figure class="curso-card__media">
-              <img src="/assets/curso-lifting-pestanas.png" alt="Curso de lifting de pestañas en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
+              <img src="/assets/curso-lifting-pestanas-new.png" alt="Curso de lifting de pestañas en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
             </figure>
             <div class="curso-card__body">
               <div class="curso-card__head">
@@ -266,7 +302,7 @@
 
           <article class="curso-card curso-card--cejas">
             <figure class="curso-card__media">
-              <img src="/assets/curso-diseno-cejas-tinte.png" alt="Curso de diseño de cejas y tinte en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
+              <img src="/assets/curso-diseno-cejas-tinte-new.png" alt="Curso de diseño de cejas y tinte en VS Studio" style="display:block;width:100%;height:auto;object-fit:contain;opacity:1;visibility:visible;" />
             </figure>
             <div class="curso-card__body">
               <div class="curso-card__head">
@@ -454,8 +490,8 @@
       <nav class="footer__nav" aria-label="Pie — enlaces rápidos">
         <ul>
           <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="academia.html">Academia</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="#resenas-google">Reseñas</a></li>
           <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="#contacto">Contacto</a></li>
@@ -509,6 +545,6 @@
   </div>
 
   <script src="assets/js/business-hours.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=hero-ticker-reveal-1" defer></script>
 </body>
 </html>

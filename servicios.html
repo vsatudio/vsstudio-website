@@ -52,7 +52,7 @@
   <link rel="preload" href="assets/hero-inicio.png" as="image" type="image/png" />
   <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="assets/fonts/cormorant-garamond-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=hero-ticker-reveal-1" />
   <!--
   =============================================================================
   BLOQUE DE ENLACES Y DATOS EDITABLES (VS Studio Beauty & Academy)
@@ -88,8 +88,8 @@
       <nav class="site-nav" id="site-nav" aria-label="Principal">
         <ul class="site-nav__list">
           <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="academia.html">Academia</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="index.html#contacto">Contacto</a></li>
         </ul>
       </nav>
@@ -103,12 +103,28 @@
     <p id="page-ext-hint" class="visually-hidden">Instagram, WhatsApp, Treatwell y Google Maps se abren en una pestaña nueva.</p>
 
     <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <span class="hero__blob hero__blob--one"></span>
+        <span class="hero__blob hero__blob--two"></span>
+        <svg class="hero__strokes" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M -50 620 C 250 520, 500 700, 900 560 S 1300 480, 1300 480" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.35" />
+          <path d="M -50 700 C 300 640, 600 760, 950 630 S 1300 600, 1300 600" fill="none" stroke="#a9726c" stroke-width="1" opacity="0.2" />
+        </svg>
+      </div>
       <div class="hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow">Servicios profesionales en Madrid</p>
-          <h1 id="hero-title" class="hero__title">Servicios de belleza en Madrid</h1>
-          <p class="hero__subtitle">Uñas, pestañas, cejas, tratamientos faciales y corporales con técnica premium y atención personalizada.</p>
-          <p class="hero__lead">Nuestro centro boutique combina cuidado detallado, resultados duraderos y una experiencia relajada en el Barrio del Pilar.</p>
+          <div class="hero__eyebrow">
+            <span class="hero__eyebrow-dot" aria-hidden="true"></span>
+            <p class="eyebrow">Servicios profesionales en Madrid</p>
+          </div>
+          <h1 id="hero-title" class="hero__title">
+            <span class="hero__title-line"><span>Servicios de belleza</span></span>
+            <span class="hero__title-line"><span>en Madrid</span></span>
+          </h1>
+          <div class="hero__text">
+            <p class="hero__subtitle">Uñas, pestañas, cejas, tratamientos faciales y corporales con técnica premium y atención personalizada.</p>
+            <p class="hero__lead">Nuestro centro boutique combina cuidado detallado, resultados duraderos y una experiencia relajada en el Barrio del Pilar.</p>
+          </div>
           <div class="hero__ctas">
             <a class="btn btn--primary" href="#reserva">Reservar cita</a>
             <a class="btn btn--ghost" href="https://wa.me/34614529469?text=Hola%2C%20me%20gustar%C3%ADa%20pedir%20cita%20en%20VS%20Studio" target="_blank" rel="noopener noreferrer" aria-describedby="page-ext-hint">Contactar por WhatsApp</a>
@@ -116,12 +132,32 @@
         </div>
 
         <div class="hero__visual" role="presentation">
+          <div class="hero__figure-glow" aria-hidden="true"></div>
           <figure class="hero__figure">
             <img src="assets/hero-inicio.png" alt="Interior del estudio: recepción y zona de trabajo luminosa" width="746" height="1024" loading="eager" fetchpriority="high" />
           </figure>
         </div>
       </div>
+      <div class="hero__scroll-cue" aria-hidden="true">
+        <span>Descubre</span>
+        <span class="hero__scroll-stem"></span>
+      </div>
     </section>
+
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Uñas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Pestañas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Cejas</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Facial</span><span class="ticker__sep"></span></div>
+        <div class="ticker__item"><span>Formación profesional</span><span class="ticker__sep"></span></div>
+      </div>
+    </div>
 
     <section class="section section--servicios" aria-labelledby="servicios-title">
       <div class="section__inner">
@@ -222,6 +258,22 @@
                 <li>Rostro y cuerpo</li>
                 <li>Cera médica higiénica</li>
                 <li>Axilas, piernas, ingles y más</li>
+              </ul>
+              <div class="service-card__actions"><a class="btn btn--small btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/">Reservar</a></div>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <figure class="service-card__media">
+              <img src="assets/servicio-masajes.png" alt="Masajes y tratamientos corporales en VS Studio" />
+            </figure>
+            <div class="service-card__content">
+              <h3>Masajes y Tratamientos Corporales</h3>
+              <p class="service-card__description">Tratamientos corporales y masajes para aliviar tensiones, mejorar el bienestar y cuidar tu cuerpo.</p>
+              <ul class="service-card__list">
+                <li>Maderoterapia</li>
+                <li>Presoterapia</li>
+                <li>Masaje relajante y reductor</li>
               </ul>
               <div class="service-card__actions"><a class="btn btn--small btn--dark" href="https://widget.treatwell.es/establecimiento/vs-studio-beauty-academy/">Reservar</a></div>
             </div>
@@ -387,8 +439,8 @@
       <nav class="footer__nav" aria-label="Pie — enlaces rápidos">
         <ul>
           <li><a href="index.html#inicio">Inicio</a></li>
-          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="academia.html">Academia</a></li>
+          <li><a href="servicios.html">Servicios</a></li>
           <li><a href="#resenas-google">Reseñas</a></li>
           <li><a href="#galeria">Galería</a></li>
           <li><a href="#ubicacion">Ubicación</a></li>
@@ -443,6 +495,6 @@
   </div>
 
   <script src="assets/js/business-hours.js" defer></script>
-  <script src="script.js" defer></script>
+  <script src="script.js?v=hero-ticker-reveal-1" defer></script>
 </body>
 </html>
