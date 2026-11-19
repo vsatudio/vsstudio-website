@@ -54,21 +54,31 @@ test("create-checkout-session rechaza datos no válidos antes de contactar Strip
   assert.equal(response.statusCode, 400);
 });
 
-test("un Deploy Preview vuelve al dominio del preview en success_url y cancel_url", () => {
-  const previewOrigin = "https://deploy-preview-42--vsstudio-test.netlify.app";
+test("acepta el dominio de producción indicado por URL", () => {
   withEnvironment({
-    CONTEXT: "deploy-preview",
     URL: "https://vsstudiobeauty.com",
-    SITE_URL: undefined,
-    DEPLOY_PRIME_URL: previewOrigin,
-    DEPLOY_URL: "https://example-deploy-id.netlify.app"
+    SITE_NAME: "rad-kitsune-cdfe7c"
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
+    assert.equal(
+      getSiteUrl({ headers: { origin: "https://vsstudiobeauty.com" } }),
+      "https://vsstudiobeauty.com"
+    );
+  });
+});
+
+test("acepta un Deploy Preview y construye sus URLs de retorno", () => {
+  const previewOrigin = "https://deploy-preview-1--rad-kitsune-cdfe7c.netlify.app";
+  withEnvironment({
+    URL: "https://vsstudiobeauty.com",
+    SITE_NAME: "rad-kitsune-cdfe7c"
   }, () => {
     const { getSiteUrl } = require("../netlify/functions/_shared/http");
     const checkout = require("../netlify/functions/create-checkout-session");
-    const siteUrl = getSiteUrl({ headers: { origin: previewOrigin } });
-    const urls = checkout.buildCheckoutUrls(siteUrl, "/curso-microblading-madrid.html");
-
-    assert.equal(siteUrl, previewOrigin);
+    const urls = checkout.buildCheckoutUrls(
+      getSiteUrl({ headers: { origin: previewOrigin } }),
+      "/curso-microblading-madrid.html"
+    );
     assert.equal(
       urls.successUrl,
       `${previewOrigin}/pago-exitoso.html?session_id={CHECKOUT_SESSION_ID}`
@@ -80,21 +90,57 @@ test("un Deploy Preview vuelve al dominio del preview en success_url y cancel_ur
   });
 });
 
-test("producción usa el dominio principal y rechaza un origin arbitrario", () => {
+test("acepta un branch deploy usando x-forwarded-host cuando falta Origin", () => {
+  const branchOrigin = "https://stripe-test--rad-kitsune-cdfe7c.netlify.app";
   withEnvironment({
-    CONTEXT: "production",
     URL: "https://vsstudiobeauty.com",
-    SITE_URL: undefined,
-    DEPLOY_PRIME_URL: undefined,
-    DEPLOY_URL: undefined
+    SITE_NAME: "rad-kitsune-cdfe7c"
   }, () => {
     const { getSiteUrl } = require("../netlify/functions/_shared/http");
     assert.equal(
-      getSiteUrl({ headers: { origin: "https://vsstudiobeauty.com" } }),
-      "https://vsstudiobeauty.com"
+      getSiteUrl({ headers: {
+        "x-forwarded-host": "stripe-test--rad-kitsune-cdfe7c.netlify.app",
+        "x-forwarded-proto": "https"
+      } }),
+      branchOrigin
     );
+  });
+});
+
+test("rechaza un dominio arbitrario", () => {
+  withEnvironment({
+    URL: "https://vsstudiobeauty.com",
+    SITE_NAME: "rad-kitsune-cdfe7c"
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
     assert.throws(
       () => getSiteUrl({ headers: { origin: "https://sitio-arbitrario.example" } }),
+      /no está autorizado/
+    );
+  });
+});
+
+test("rechaza un dominio que solo contiene SITE_NAME sin cumplir el sufijo", () => {
+  withEnvironment({
+    URL: "https://vsstudiobeauty.com",
+    SITE_NAME: "rad-kitsune-cdfe7c"
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
+    assert.throws(
+      () => getSiteUrl({ headers: { origin: "https://rad-kitsune-cdfe7c.evil.example" } }),
+      /no está autorizado/
+    );
+  });
+});
+
+test("rechaza HTTP aunque el hostname sea válido", () => {
+  withEnvironment({
+    URL: "https://vsstudiobeauty.com",
+    SITE_NAME: "rad-kitsune-cdfe7c"
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
+    assert.throws(
+      () => getSiteUrl({ headers: { origin: "http://deploy-preview-1--rad-kitsune-cdfe7c.netlify.app" } }),
       /no está autorizado/
     );
   });

@@ -19,53 +19,67 @@ function parseJsonBody(event) {
   return JSON.parse(body);
 }
 
-function normalizeOrigin(value) {
+function normalizeHttpsOrigin(value) {
   if (!value) return null;
   try {
     const url = new URL(value);
-    if (url.protocol !== "https:" && url.protocol !== "http:") return null;
+    if (url.protocol !== "https:" || url.username || url.password || url.port) return null;
+    if (url.pathname !== "/" || url.search || url.hash) return null;
     return url.origin;
   } catch (error) {
     return null;
   }
 }
 
-function isLocalOrigin(origin) {
+function getHeader(headers, name) {
+  if (!headers) return null;
+  const expectedName = name.toLowerCase();
+  for (const [headerName, value] of Object.entries(headers)) {
+    if (headerName.toLowerCase() === expectedName && typeof value === "string") return value.trim();
+  }
+  return null;
+}
+
+function getSiteName() {
+  const siteName = (process.env.SITE_NAME || "").toLowerCase();
+  return /^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(siteName) ? siteName : null;
+}
+
+function isAllowedSiteOrigin(value) {
+  const origin = normalizeHttpsOrigin(value);
   if (!origin) return false;
+
+  const productionOrigin = normalizeHttpsOrigin(process.env.URL);
+  if (productionOrigin && origin === productionOrigin) return true;
+
+  const siteName = getSiteName();
+  if (!siteName) return false;
+
   const hostname = new URL(origin).hostname;
-  return hostname === "localhost" || hostname === "127.0.0.1";
+  const netlifyHostname = `${siteName}.netlify.app`;
+  const deploySuffix = `--${netlifyHostname}`;
+  return hostname === netlifyHostname ||
+    (hostname.endsWith(deploySuffix) && hostname.length > deploySuffix.length);
 }
 
 function getSiteUrl(event) {
-  const context = process.env.CONTEXT || "";
-  const productionOrigin = normalizeOrigin(process.env.SITE_URL || process.env.URL);
-  const deployPreviewOrigin = normalizeOrigin(process.env.DEPLOY_PRIME_URL);
-  const deployOrigin = normalizeOrigin(process.env.DEPLOY_URL);
-  const trustedOrigins = new Set([
-    productionOrigin,
-    deployPreviewOrigin,
-    deployOrigin
-  ].filter(Boolean));
-
-  const requestOriginValue = event.headers && (event.headers.origin || event.headers.Origin);
-  if (requestOriginValue) {
-    const requestOrigin = normalizeOrigin(requestOriginValue);
-    const localDevelopment = requestOrigin && isLocalOrigin(requestOrigin) &&
-      (context === "dev" || (!productionOrigin && !deployPreviewOrigin && !deployOrigin));
-
-    if (requestOrigin && (trustedOrigins.has(requestOrigin) || localDevelopment)) {
-      return requestOrigin;
-    }
+  const headers = event.headers || {};
+  const requestOrigin = getHeader(headers, "origin");
+  if (requestOrigin) {
+    if (isAllowedSiteOrigin(requestOrigin)) return normalizeHttpsOrigin(requestOrigin);
     throw new Error("El origen de la solicitud no está autorizado.");
   }
 
-  if (context === "deploy-preview" || context === "branch-deploy") {
-    if (deployPreviewOrigin || deployOrigin) return deployPreviewOrigin || deployOrigin;
+  const forwardedProtocol = getHeader(headers, "x-forwarded-proto");
+  if (forwardedProtocol && forwardedProtocol.toLowerCase() !== "https") {
+    throw new Error("El protocolo de la solicitud no está autorizado.");
   }
-  if (productionOrigin) return productionOrigin;
-  if (deployPreviewOrigin || deployOrigin) return deployPreviewOrigin || deployOrigin;
 
-  throw new Error("No se pudo determinar una URL segura para el sitio.");
+  const requestHost = getHeader(headers, "x-forwarded-host") || getHeader(headers, "host");
+  const hostOrigin = requestHost ? `https://${requestHost}` : null;
+  if (hostOrigin && isAllowedSiteOrigin(hostOrigin)) return normalizeHttpsOrigin(hostOrigin);
+
+  throw new Error("El origen de la solicitud no está autorizado.");
 }
 
-module.exports = { json, parseJsonBody, getSiteUrl, normalizeOrigin };
+module.exports = { json, parseJsonBody, getSiteUrl, isAllowedSiteOrigin, normalizeHttpsOrigin };
