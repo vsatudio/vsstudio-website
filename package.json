@@ -1,0 +1,21 @@
+{
+  "name": "vsstudio-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web estático de VS Studio con Stripe Checkout mediante Netlify Functions.",
+  "scripts": {
+    "build": "node scripts/build-static.js",
+    "dev": "netlify dev",
+    "check": "node --check assets/js/checkout.js && node --check netlify/functions/create-checkout-session.js && node --check netlify/functions/get-checkout-session.js && node --check netlify/functions/stripe-webhook.js",
+    "test": "node --test tests/stripe-phase1.test.js"
+  },
+  "dependencies": {
+    "stripe": "^23.1.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^27.20.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

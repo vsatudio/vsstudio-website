@@ -1,0 +1,8 @@
+node_modules/
+.pnpm-store/
+.netlify/
+dist/
+.DS_Store
+.env
+.env.*
+!.env.example

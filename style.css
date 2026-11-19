@@ -4513,3 +4513,154 @@ textarea.field__control {
     break-inside: avoid;
   }
 }
+
+/* Stripe Checkout: controles de pago y recibo (FASE 1) */
+.course-payment-section {
+  background: var(--color-ivory);
+}
+
+.course-payment {
+  max-width: 52rem;
+  text-align: center;
+}
+
+.course-payment__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.course-payment__actions .btn {
+  min-width: 14rem;
+}
+
+.course-payment__actions .btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.course-payment__status {
+  min-height: 1.5rem;
+  margin: var(--space-sm) 0 0;
+  font-weight: 600;
+}
+
+.course-payment__status.is-error,
+.payment-receipt__header .is-error {
+  color: #8b1e2d;
+}
+
+.course-payment__secure {
+  margin: 0.35rem 0 0;
+  color: var(--color-taupe);
+  font-size: 0.95rem;
+}
+
+.payment-success-page {
+  min-height: 100vh;
+  background: var(--color-ivory);
+}
+
+.payment-receipt-shell {
+  width: min(100% - 2rem, 52rem);
+  margin: 0 auto;
+  padding: clamp(2rem, 8vw, 5rem) 0;
+}
+
+.payment-receipt {
+  padding: clamp(1.5rem, 5vw, 3rem);
+  border: 1px solid var(--line-medium);
+  border-radius: var(--radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-soft);
+}
+
+.payment-receipt__header {
+  text-align: center;
+}
+
+.payment-receipt__header .wordmark {
+  display: inline-flex;
+  margin-bottom: var(--space-md);
+}
+
+.payment-receipt__details {
+  margin: var(--space-lg) 0;
+  border-top: 1px solid var(--line-medium);
+}
+
+.payment-receipt__details div {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.7fr) minmax(0, 1.3fr);
+  gap: var(--space-sm);
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.payment-receipt__details dt {
+  color: var(--color-taupe);
+  font-weight: 600;
+}
+
+.payment-receipt__details dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: var(--color-taupe-dark);
+  font-weight: 600;
+}
+
+.payment-receipt__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.payment-receipt__stripe-link {
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 560px) {
+  .course-payment__actions,
+  .payment-receipt__actions {
+    flex-direction: column;
+  }
+
+  .course-payment__actions .btn,
+  .payment-receipt__actions .btn {
+    width: 100%;
+  }
+
+  .payment-receipt__details div {
+    grid-template-columns: 1fr;
+    gap: 0.2rem;
+  }
+}
+
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+
+  .payment-success-page {
+    background: #fff;
+  }
+
+  .payment-receipt-shell {
+    width: 100%;
+    padding: 0;
+  }
+
+  .payment-receipt {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .payment-receipt__actions {
+    display: none !important;
+  }
+}
