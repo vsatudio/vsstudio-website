@@ -19,20 +19,53 @@ function parseJsonBody(event) {
   return JSON.parse(body);
 }
 
-function getSiteUrl(event) {
-  const configuredUrl = process.env.SITE_URL || process.env.URL;
-  if (configuredUrl) return configuredUrl.replace(/\/$/, "");
-
-  const origin = event.headers && (event.headers.origin || event.headers.Origin);
-  if (origin) {
-    const url = new URL(origin);
-    if (url.hostname === "localhost" || url.hostname === "127.0.0.1") {
-      return url.origin;
-    }
+function normalizeOrigin(value) {
+  if (!value) return null;
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" && url.protocol !== "http:") return null;
+    return url.origin;
+  } catch (error) {
+    return null;
   }
-
-  throw new Error("SITE_URL no está configurada.");
 }
 
-module.exports = { json, parseJsonBody, getSiteUrl };
+function isLocalOrigin(origin) {
+  if (!origin) return false;
+  const hostname = new URL(origin).hostname;
+  return hostname === "localhost" || hostname === "127.0.0.1";
+}
 
+function getSiteUrl(event) {
+  const context = process.env.CONTEXT || "";
+  const productionOrigin = normalizeOrigin(process.env.SITE_URL || process.env.URL);
+  const deployPreviewOrigin = normalizeOrigin(process.env.DEPLOY_PRIME_URL);
+  const deployOrigin = normalizeOrigin(process.env.DEPLOY_URL);
+  const trustedOrigins = new Set([
+    productionOrigin,
+    deployPreviewOrigin,
+    deployOrigin
+  ].filter(Boolean));
+
+  const requestOriginValue = event.headers && (event.headers.origin || event.headers.Origin);
+  if (requestOriginValue) {
+    const requestOrigin = normalizeOrigin(requestOriginValue);
+    const localDevelopment = requestOrigin && isLocalOrigin(requestOrigin) &&
+      (context === "dev" || (!productionOrigin && !deployPreviewOrigin && !deployOrigin));
+
+    if (requestOrigin && (trustedOrigins.has(requestOrigin) || localDevelopment)) {
+      return requestOrigin;
+    }
+    throw new Error("El origen de la solicitud no está autorizado.");
+  }
+
+  if (context === "deploy-preview" || context === "branch-deploy") {
+    if (deployPreviewOrigin || deployOrigin) return deployPreviewOrigin || deployOrigin;
+  }
+  if (productionOrigin) return productionOrigin;
+  if (deployPreviewOrigin || deployOrigin) return deployPreviewOrigin || deployOrigin;
+
+  throw new Error("No se pudo determinar una URL segura para el sitio.");
+}
+
+module.exports = { json, parseJsonBody, getSiteUrl, normalizeOrigin };

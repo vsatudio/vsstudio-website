@@ -5,6 +5,23 @@ const assert = require("node:assert/strict");
 const Stripe = require("stripe");
 const catalog = require("../netlify/functions/_shared/course-catalog");
 
+function withEnvironment(values, callback) {
+  const previous = {};
+  for (const key of Object.keys(values)) {
+    previous[key] = process.env[key];
+    if (values[key] === undefined) delete process.env[key];
+    else process.env[key] = values[key];
+  }
+  try {
+    return callback();
+  } finally {
+    for (const key of Object.keys(values)) {
+      if (previous[key] === undefined) delete process.env[key];
+      else process.env[key] = previous[key];
+    }
+  }
+}
+
 test("el catálogo contiene los siete cursos y calcula depósito y pago completo", () => {
   const expected = {
     "manicura-profesional": [25000, 7500, 17500],
@@ -35,6 +52,52 @@ test("create-checkout-session rechaza datos no válidos antes de contactar Strip
     body: JSON.stringify({ courseId: "inventado", paymentType: "deposit", amount: 1 })
   });
   assert.equal(response.statusCode, 400);
+});
+
+test("un Deploy Preview vuelve al dominio del preview en success_url y cancel_url", () => {
+  const previewOrigin = "https://deploy-preview-42--vsstudio-test.netlify.app";
+  withEnvironment({
+    CONTEXT: "deploy-preview",
+    URL: "https://vsstudiobeauty.com",
+    SITE_URL: undefined,
+    DEPLOY_PRIME_URL: previewOrigin,
+    DEPLOY_URL: "https://example-deploy-id.netlify.app"
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
+    const checkout = require("../netlify/functions/create-checkout-session");
+    const siteUrl = getSiteUrl({ headers: { origin: previewOrigin } });
+    const urls = checkout.buildCheckoutUrls(siteUrl, "/curso-microblading-madrid.html");
+
+    assert.equal(siteUrl, previewOrigin);
+    assert.equal(
+      urls.successUrl,
+      `${previewOrigin}/pago-exitoso.html?session_id={CHECKOUT_SESSION_ID}`
+    );
+    assert.equal(
+      urls.cancelUrl,
+      `${previewOrigin}/curso-microblading-madrid.html#pago-curso`
+    );
+  });
+});
+
+test("producción usa el dominio principal y rechaza un origin arbitrario", () => {
+  withEnvironment({
+    CONTEXT: "production",
+    URL: "https://vsstudiobeauty.com",
+    SITE_URL: undefined,
+    DEPLOY_PRIME_URL: undefined,
+    DEPLOY_URL: undefined
+  }, () => {
+    const { getSiteUrl } = require("../netlify/functions/_shared/http");
+    assert.equal(
+      getSiteUrl({ headers: { origin: "https://vsstudiobeauty.com" } }),
+      "https://vsstudiobeauty.com"
+    );
+    assert.throws(
+      () => getSiteUrl({ headers: { origin: "https://sitio-arbitrario.example" } }),
+      /no está autorizado/
+    );
+  });
 });
 
 test("get-checkout-session rechaza referencias que no sean de test", async () => {

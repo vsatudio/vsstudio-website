@@ -4,6 +4,13 @@ const { getStripe } = require("./_shared/stripe-client");
 const { getCourse, calculatePayment, buildMetadata, CURRENCY } = require("./_shared/course-catalog");
 const { json, parseJsonBody, getSiteUrl } = require("./_shared/http");
 
+function buildCheckoutUrls(siteUrl, coursePage) {
+  return {
+    successUrl: `${siteUrl}/pago-exitoso.html?session_id={CHECKOUT_SESSION_ID}`,
+    cancelUrl: `${siteUrl}${coursePage}#pago-curso`
+  };
+}
+
 exports.handler = async function handler(event) {
   if (event.httpMethod !== "POST") {
     return json(405, { error: "Método no permitido." }, { Allow: "POST" });
@@ -25,6 +32,7 @@ exports.handler = async function handler(event) {
   try {
     const stripe = getStripe();
     const siteUrl = getSiteUrl(event);
+    const checkoutUrls = buildCheckoutUrls(siteUrl, course.page);
     const metadata = buildMetadata(course, input.paymentType, payment);
     const concept = input.paymentType === "deposit" ? "Reserva 30%" : "Pago completo";
 
@@ -52,8 +60,8 @@ exports.handler = async function handler(event) {
       }],
       metadata,
       payment_intent_data: { metadata },
-      success_url: `${siteUrl}/pago-exitoso.html?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}${course.page}#pago-curso`,
+      success_url: checkoutUrls.successUrl,
+      cancel_url: checkoutUrls.cancelUrl,
       locale: "es"
     });
 
@@ -64,3 +72,4 @@ exports.handler = async function handler(event) {
   }
 };
 
+module.exports.buildCheckoutUrls = buildCheckoutUrls;
