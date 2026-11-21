@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow, noarchive" />
+  <meta name="referrer" content="no-referrer" />
+  <title>Pago confirmado | VS Studio Beauty &amp; Academy</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="payment-success-page">
+  <main class="payment-receipt-shell" id="contenido-principal">
+    <section class="payment-receipt" aria-labelledby="payment-title">
+      <header class="payment-receipt__header">
+        <a class="wordmark wordmark--logo" href="index.html" aria-label="VS Studio Beauty & Academy, inicio">
+          <img class="wordmark__img" src="assets/logo-vs-studio-new.png" alt="" width="500" height="500" />
+        </a>
+        <p class="eyebrow">Pago seguro</p>
+        <h1 id="payment-title">Estamos verificando tu pago</h1>
+        <p id="payment-message" role="status" aria-live="polite">Espera unos segundos mientras recuperamos los datos de Stripe.</p>
+      </header>
+
+      <dl class="payment-receipt__details is-hidden" id="payment-details">
+        <div><dt>Nombre de la alumna</dt><dd data-receipt="studentName"></dd></div>
+        <div><dt>Email</dt><dd data-receipt="email"></dd></div>
+        <div><dt>Curso</dt><dd data-receipt="courseName"></dd></div>
+        <div><dt>Precio total</dt><dd data-receipt="total"></dd></div>
+        <div><dt>Concepto</dt><dd data-receipt="paymentType"></dd></div>
+        <div><dt>Importe pagado</dt><dd data-receipt="amountPaid"></dd></div>
+        <div><dt>Saldo pendiente</dt><dd data-receipt="remaining"></dd></div>
+        <div><dt>Fecha</dt><dd data-receipt="paidAt"></dd></div>
+        <div><dt>Referencia Stripe</dt><dd data-receipt="reference"></dd></div>
+      </dl>
+
+      <div class="payment-receipt__actions is-hidden" id="payment-actions">
+        <button class="btn btn--primary" type="button" id="print-receipt">Imprimir / Guardar recibo</button>
+        <a class="btn btn--ghost" href="academia.html">Volver a Academia</a>
+        <a class="payment-receipt__stripe-link is-hidden" id="stripe-receipt" href="#" target="_blank" rel="noopener noreferrer">Ver recibo de Stripe</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+      var title = document.getElementById("payment-title");
+      var message = document.getElementById("payment-message");
+      var details = document.getElementById("payment-details");
+      var actions = document.getElementById("payment-actions");
+      var stripeReceipt = document.getElementById("stripe-receipt");
+      var params = new URLSearchParams(window.location.search);
+      var sessionId = params.get("session_id");
+
+      function money(cents, currency) {
+        return new Intl.NumberFormat("es-ES", { style: "currency", currency: currency || "EUR" }).format(cents / 100);
+      }
+
+      function put(key, value) {
+        var element = document.querySelector('[data-receipt="' + key + '"]');
+        if (element) element.textContent = value || "—";
+      }
+
+      function fail(text) {
+        title.textContent = "No hemos podido verificar el pago";
+        message.textContent = text;
+        message.classList.add("is-error");
+      }
+
+      if (!sessionId) {
+        fail("Falta la referencia de la sesión. Si has realizado un pago, contacta con VS Studio.");
+        return;
+      }
+
+      fetch("/.netlify/functions/get-checkout-session?session_id=" + encodeURIComponent(sessionId), {
+        headers: { Accept: "application/json" },
+        cache: "no-store"
+      }).then(function (response) {
+        return response.json().then(function (data) {
+          if (!response.ok) throw new Error(data.error || "No se pudo verificar el pago.");
+          return data;
+        });
+      }).then(function (data) {
+        title.textContent = "Pago confirmado";
+        message.textContent = "Gracias. Tu pago se ha procesado correctamente.";
+        put("studentName", data.studentName);
+        put("email", data.email);
+        put("courseName", data.courseName);
+        put("total", money(data.totalCents, data.currency));
+        put("paymentType", data.paymentType === "deposit" ? "Reserva 30%" : "Pago completo");
+        put("amountPaid", money(data.amountPaidCents, data.currency));
+        put("remaining", money(data.remainingCents, data.currency));
+        put("paidAt", new Intl.DateTimeFormat("es-ES", { dateStyle: "long", timeStyle: "short" }).format(new Date(data.paidAt)));
+        put("reference", data.stripeReference);
+        details.classList.remove("is-hidden");
+        actions.classList.remove("is-hidden");
+        if (data.stripeReceiptUrl) {
+          stripeReceipt.href = data.stripeReceiptUrl;
+          stripeReceipt.classList.remove("is-hidden");
+        }
+      }).catch(function (error) {
+        fail(error.message || "No se pudo verificar el pago.");
+      });
+
+      document.getElementById("print-receipt").addEventListener("click", function () {
+        window.print();
+      });
+    })();
+  </script>
+</body>
+</html>
